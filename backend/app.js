@@ -1,17 +1,24 @@
-const express = require('express')
+const express = require("express");
 const app = express();
+const connectToDatabase = require('./db/db')
 
-const port = 3000;
+const dotenv = require("dotenv");
+dotenv.config();
 
-app.get('/', (req, res)=>{
-    res.send("This is the homepage route 101")
-})
+connectToDatabase();
 
-app.listen(port, ()=>{
-    console.log(`The server is up at \n http://localhost:${port}`)
-})
+app.get("/", (req, res) => {
+  res.send("This is the homepage route 101");
+});
 
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
-/**
- * This is a testing task
- */
+const userRoute = require('./routes/user.routes')
+app.use('/api/auth', userRoute);
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`The server is up at \n http://localhost:${port}`);
+});
