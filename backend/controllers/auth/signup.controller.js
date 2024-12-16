@@ -1,10 +1,10 @@
 const { generateToken } = require("../../utils/tokenGenerator");
-const { hashedPassword } = require("../../utils/hashPassword");
+const { hashedPassword } = require("../../utils/bcrypt.operations");
 const {
   findUserByEmail,
   createUser,
 } = require("../../utils/User.Db.Operations");
-const { validateSignupData } = require("../../utils/validateSignupData");
+const { validateSignupData } = require("../../utils/validateAuthData");
 
 const signupUser = async (req, res) => {
   const { username, email, password } = req.body;
