@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { signupUser } = require("../controllers/user.controller");
+const { signupUser } = require("../controllers/auth/user.controller");
 // user signup process api
 router.post("/signup", signupUser);
 
