@@ -20,11 +20,9 @@ const Login = () => {
 
   return (
     <>
-      <form
-        onSubmit={(e) => {
-          submitHandler(e);
-        }}
-      >
+      <form onSubmit={(e)=>{
+        submitHandler(e);
+      }}>
         <label for="email">Email:</label>
         <br />
         <input
@@ -39,15 +37,10 @@ const Login = () => {
         <br />
         <label for="password">Password:</label>
         <br />
-        <input
-          value={password}
+        <input value={password}
           onChange={(e) => {
             setpassword(e.target.value);
-          }}
-          type="password"
-          name="password"
-          id="password"
-        />
+          }} type="password" name="password" id="password" />
         <br />
         <br />
         <button>Login</button>

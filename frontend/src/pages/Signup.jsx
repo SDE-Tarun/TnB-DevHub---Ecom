@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 
+import axios from 'axios';
+
 const Signup = () => {
-  const [name, setname] = useState("");
+  const [username, setusername] = useState("");
 
   const [email, setemail] = useState("");
 
@@ -9,19 +11,54 @@ const Signup = () => {
 
   const [userData, setuserData] = useState({});
 
-  const submitHandler = (e) => {
-   e.preventDefault();
-   setuserData({
-    name: name,
-    email: email,
-    password: password
-   })
-   setname('');
-   setemail('');
-   setpassword('')
-   console.log(userData);
+  // const submitHandler = (e) => {
+  //  e.preventDefault();
+  //  setuserData({
+  //   name: name,
+  //   email: email,
+  //   password: password
+  //  })
+  //  setname('');
+  //  setemail('');
+  //  setpassword('')
+  //  console.log(userData);
    
+  // }
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    // setUserData({
+    //   fullName: {
+    //     firstName: firstName,
+    //     lastName: lastName,
+    //   },
+    //   email: email,
+    //   password: password,
+    // });
+    // console.log(userData);
+
+    const newUser = (
+      {
+          username: username,
+          email: email,
+          password: password
+    }
+  )
+
+  const response = await axios.post(`${import.meta.env.VITE_BASE_URL}//api/auth/signup`, newUser);
+
+  if(response.status === 201){
+    const data = response.data
+
+    setUser(data.user)
+
+    navigate('/home')
   }
+
+    setusername("");
+    setemail("");
+    setpassword("");
+  };
 
   return (
     <>
@@ -31,9 +68,9 @@ const Signup = () => {
         <label for="name">Name:</label>
         <br />
         <input
-          value={name}
+          value={username}
           onChange={(e) => {
-            setname(e.target.value);
+            setusername(e.target.value);
           }}
           type="text"
           name="name"
