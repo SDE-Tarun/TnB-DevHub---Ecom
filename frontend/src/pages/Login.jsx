@@ -1,21 +1,39 @@
 import React, { useState } from "react";
 
+import axios from 'axios';
+
 const Login = () => {
-  const [email, setemail] = useState("");
+  const [username, setusername] = useState("");
 
   const [password, setpassword] = useState("");
 
   const [userData, setuserData] = useState({});
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    setuserData({
-      email: email,
-      password: password,
-    });
-    setemail("");
+    // setuserData({
+    //   email: email,
+    //   password: password,
+    // });
+    // setemail("");
+    // setpassword("");
+    // console.log(userData);
+
+    const user = {
+      username:username,
+      password:password
+    }
+
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/login`, user);
+
+    if(response.status === 200){
+      const data = response.data
+      setUser(data.user)
+      navigate('/')
+    }
+
+    setusername("");
     setpassword("");
-    console.log(userData);
   };
 
   return (
@@ -23,16 +41,16 @@ const Login = () => {
       <form onSubmit={(e)=>{
         submitHandler(e);
       }}>
-        <label for="email">Email:</label>
+        <label for="username">Username:</label>
         <br />
         <input
-          value={email}
+          value={username}
           onChange={(e) => {
-            setemail(e.target.value);
+            setusername(e.target.value);
           }}
-          type="email"
-          name="email"
-          id="email"
+          type="text"
+          name="username"
+          id="username"
         />
         <br />
         <label for="password">Password:</label>

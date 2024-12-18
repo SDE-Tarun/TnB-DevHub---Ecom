@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { UserDataContext } from '../context/UserContext';
 
 const Signup = () => {
   const [username, setusername] = useState("");
@@ -45,14 +46,14 @@ const Signup = () => {
     }
   )
 
-  const response = await axios.post(`${import.meta.env.VITE_BASE_URL}//api/auth/signup`, newUser);
+  const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/signup`, newUser);
 
   if(response.status === 201){
     const data = response.data
 
     setUser(data.user)
 
-    navigate('/home')
+    navigate('/login')
   }
 
     setusername("");
