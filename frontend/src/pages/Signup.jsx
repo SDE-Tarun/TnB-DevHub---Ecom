@@ -110,7 +110,6 @@ import HeaderDashed from "../components/HeaderDashed";
 import { useNavigate, Link } from "react-router-dom";
 
 const Signup = () => {
-  const backgroundImage = "";
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState(null); // To store backend validation errors
   const navigate = useNavigate();
@@ -145,15 +144,7 @@ const Signup = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="Signup-Page text-center sec-padd"
-      style={{ minHeight: '100vh',
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        height: "100vh", // Takes full viewport height
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        // color: "white", // Optional: to make the text more visible
+      style={{ minHeight: '100vh'
        }}
     >
       <div className="container d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>

@@ -91,7 +91,6 @@ import HeaderDashed from "../components/HeaderDashed";
 import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
-  const backgroundImage = "";
   const [showPassword, setShowPassword] = useState(false);
   const [serverErrors, setServerErrors] = useState([]);
   const navigate = useNavigate();
@@ -130,16 +129,6 @@ console.log(response);
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="Login-Page text-center sec-padd"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        height: "100vh", // Takes full viewport height
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        // color: "white", // Optional: to make the text more visible
-      }}
     >
       <div className="container">
         <HeaderDashed head1="Log" head2="IN" />
