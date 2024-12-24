@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
-import { UserDataContext } from '../context/UserContext';
+import axios from "axios";
+import { UserDataContext } from "../context/UserContext";
 
 const Signup = () => {
   const [username, setusername] = useState("");
@@ -23,7 +23,7 @@ const Signup = () => {
   //  setemail('');
   //  setpassword('')
   //  console.log(userData);
-   
+
   // }
 
   const submitHandler = async (e) => {
@@ -38,23 +38,24 @@ const Signup = () => {
     // });
     // console.log(userData);
 
-    const newUser = (
-      {
-          username: username,
-          email: email,
-          password: password
+    const newUser = {
+      username: username,
+      email: email,
+      password: password,
+    };
+
+    const response = await axios.post(
+      `${import.meta.env.VITE_BASE_URL}/api/auth/signup`,
+      newUser
+    );
+
+    if (response.status === 201) {
+      const data = response.data;
+
+      setUser(data.user);
+
+      navigate("/login");
     }
-  )
-
-  const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/signup`, newUser);
-
-  if(response.status === 201){
-    const data = response.data
-
-    setUser(data.user)
-
-    navigate('/login')
-  }
 
     setusername("");
     setemail("");
@@ -63,9 +64,11 @@ const Signup = () => {
 
   return (
     <>
-      <form onSubmit={(e)=> {
-        submitHandler(e);
-      }}>
+      <form
+        onSubmit={(e) => {
+          submitHandler(e);
+        }}
+      >
         <label for="name">Name:</label>
         <br />
         <input

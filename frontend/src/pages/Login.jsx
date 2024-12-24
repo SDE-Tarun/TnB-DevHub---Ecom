@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
-import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
 
 const Login = () => {
   const [username, setusername] = useState("");
@@ -20,16 +22,19 @@ const Login = () => {
     // console.log(userData);
 
     const user = {
-      username:username,
-      password:password
-    }
+      username: username,
+      password: password,
+    };
 
-    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/login`, user);
+    const response = await axios.post(
+      `${import.meta.env.VITE_BASE_URL}/api/auth/login`,
+      user
+    );
 
-    if(response.status === 200){
-      const data = response.data
-      setUser(data.user)
-      navigate('/')
+    if (response.status === 200) {
+      const data = response.data;
+      setUser(data.user);
+      navigate("/");
     }
 
     setusername("");
@@ -38,9 +43,11 @@ const Login = () => {
 
   return (
     <>
-      <form onSubmit={(e)=>{
-        submitHandler(e);
-      }}>
+      <form
+        onSubmit={(e) => {
+          submitHandler(e);
+        }}
+      >
         <label for="username">Username:</label>
         <br />
         <input
@@ -55,10 +62,15 @@ const Login = () => {
         <br />
         <label for="password">Password:</label>
         <br />
-        <input value={password}
+        <input
+          value={password}
           onChange={(e) => {
             setpassword(e.target.value);
-          }} type="password" name="password" id="password" />
+          }}
+          type="password"
+          name="password"
+          id="password"
+        />
         <br />
         <br />
         <button>Login</button>
