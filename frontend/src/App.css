@@ -33,8 +33,16 @@
     color: #f1f1f1; /* Highlight links on hover */
 }
 
-  
+.active {
+	color: #007bff;
+  }
 
+  input:focus, textarea:focus {
+	outline: 2px solid #007bff;
+	border-color: #007bff;
+  }
+  
+  
 :root {
 	--c-black: #000;
 	--c-white: #fff;
@@ -46,6 +54,7 @@
 	--c-pink: #bf83a6;
 	--c-orange: #ed5733;
 	--trans-3: 0.3s;
+	background-color: var(--c-black, #000);
 }
 body {
 	font-family: "Outfit", sans-serif !important;
