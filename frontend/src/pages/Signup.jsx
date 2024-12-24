@@ -110,7 +110,7 @@ import HeaderDashed from "../components/HeaderDashed";
 import { useNavigate, Link } from "react-router-dom";
 
 const Signup = () => {
-  const backgroundImage = "https://img.freepik.com/free-photo/covid-pandemic-lifestyle-concept-man-thinking-wearing-face-mask-holding-shopping-bags-imaging-so_1258-153741.jpg?t=st=1735020444~exp=1735024044~hmac=3852694ca468e306db82235184589e7c6950ed85f55648a055f7b884ca07363a&w=1800";
+  const backgroundImage = "";
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState(null); // To store backend validation errors
   const navigate = useNavigate();
@@ -126,10 +126,13 @@ const Signup = () => {
       });
       
       const result = await response.json();
-      if (result.errors) {
-        setErrors(result.errors); // Set backend validation errors
+      console.log(result);
+      
+      if (response.status === 400) {
+        return alert(result.message); // Backend validation errors
       } else {
-        navigate("/login"); // Navigate to login page on successful signup
+        navigate("/"); // Navigate to login page on successful signup
+        alert('User successfully created');
       }
     } catch (error) {
       console.error("Error during signup:", error);

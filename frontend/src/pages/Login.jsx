@@ -91,7 +91,7 @@ import HeaderDashed from "../components/HeaderDashed";
 import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
-  const backgroundImage = "https://img.freepik.com/free-photo/side-view-happy-woman-with-guitar_23-2148751489.jpg?t=st=1735019860~exp=1735023460~hmac=354c7a2e5a940cdfae0ab7aa54a26fd8ecbee6f82018611391211a2256e93934&w=2000";
+  const backgroundImage = "";
   const [showPassword, setShowPassword] = useState(false);
   const [serverErrors, setServerErrors] = useState([]);
   const navigate = useNavigate();
@@ -106,15 +106,18 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
+console.log(response);
 
       if (response.ok) {
         const data = await response.json();
         console.log("Login successful", data);
+        alert('User logged in successfully');
         navigate("/");
         // Handle successful login here (e.g., redirect)
       } else {
         const data = await response.json();
         setServerErrors(data.errors || []);
+        alert('Credentials do not Match');
       }
     } catch (error) {
       console.error("Error during login:", error);
