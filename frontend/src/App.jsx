@@ -7,6 +7,12 @@ import AdminPanel from "./pages/AdminPanel";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 
+// Importing styles and scripts
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "boxicons/css/boxicons.min.css";
+import "./App.css";
+
 const App = () => {
   return (
     <div>
