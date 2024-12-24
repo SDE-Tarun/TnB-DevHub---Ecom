@@ -12,6 +12,10 @@ const Signup = () => {
 
   const [userData, setuserData] = useState({});
 
+  const { user, setuser } = React.useContext(UserDataContext);
+
+  const navigate = useNavigate();
+
   // const submitHandler = (e) => {
   //  e.preventDefault();
   //  setuserData({
@@ -52,7 +56,7 @@ const Signup = () => {
     if (response.status === 201) {
       const data = response.data;
 
-      setUser(data.user);
+      setuser(data.user);
 
       navigate("/login");
     }

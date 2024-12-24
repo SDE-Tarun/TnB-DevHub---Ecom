@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
+import { UserDataContext } from "../context/UserContext";
+
 import axios from "axios";
 
 const Login = () => {
@@ -10,6 +12,10 @@ const Login = () => {
   const [password, setpassword] = useState("");
 
   const [userData, setuserData] = useState({});
+
+  const { user, setuser } = React.useContext(UserDataContext);
+
+  const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -33,7 +39,7 @@ const Login = () => {
 
     if (response.status === 200) {
       const data = response.data;
-      setUser(data.user);
+      setuser(data.user);
       navigate("/");
     }
 
