@@ -69,7 +69,7 @@ const Signup = () => {
           submitHandler(e);
         }}
       >
-        <label for="name">Name:</label>
+        <label for="username">Username:</label>
         <br />
         <input
           value={username}
