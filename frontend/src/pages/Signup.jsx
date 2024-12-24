@@ -16,32 +16,8 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  // const submitHandler = (e) => {
-  //  e.preventDefault();
-  //  setuserData({
-  //   name: name,
-  //   email: email,
-  //   password: password
-  //  })
-  //  setname('');
-  //  setemail('');
-  //  setpassword('')
-  //  console.log(userData);
-
-  // }
-
   const submitHandler = async (e) => {
     e.preventDefault();
-    // setUserData({
-    //   fullName: {
-    //     firstName: firstName,
-    //     lastName: lastName,
-    //   },
-    //   email: email,
-    //   password: password,
-    // });
-    // console.log(userData);
-
     const newUser = {
       username: username,
       email: email,

@@ -19,13 +19,6 @@ const Login = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    // setuserData({
-    //   email: email,
-    //   password: password,
-    // });
-    // setemail("");
-    // setpassword("");
-    // console.log(userData);
 
     const user = {
       username: username,
