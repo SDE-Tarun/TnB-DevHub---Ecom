@@ -26,7 +26,7 @@ const WelcomePage = () => {
     >
       <div className="text-center welcome-content">
         <motion.img
-          src="https://bestanimations.com/media/funny-christmas/998587553funny-santa-dancing-gif-ho-ho-ho-merry-christmas.gif" // Replace with your actual image
+          src="https://sundaycitizen.co/cdn/shop/files/GIF_SC-Herobanner_BFCMSALE_desktop.gif?v=1700181621&width=1620%201620w" // Replace with your actual image
           alt="Bedsheets and Comforters"
           className="img-fluid"
           initial={{ scale: 0.8 }}
