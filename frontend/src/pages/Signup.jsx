@@ -275,12 +275,23 @@ const Signup = () => {
         body: JSON.stringify(values),
       });
 
+      console.log(response);
+      
+
       const result = await response.json();
       console.log(result);
+
+      const user = result.newUser;
+      console.log(user);
+      
 
       if (response.status === 400) {
         return alert(result.message); // Backend validation errors
       } else {
+        // Store the token in localStorage (or sessionStorage)
+        localStorage.setItem('token', result.token);
+        // Optionally, you can store the user data as well
+        localStorage.setItem("user", JSON.stringify(result.newUser));
         navigate("/"); // Navigate to login page on successful signup
         alert("User successfully created");
       }

@@ -351,7 +351,7 @@ const Login = () => {
                 disabled={isSubmitting}
                 {...buttonAnimation}
               >
-                Sign In
+                Log In
               </motion.button>
 
               <motion.p

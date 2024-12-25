@@ -5,6 +5,8 @@ import { Tooltip } from "bootstrap";
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
+  const [username, setusername] = useState("");
+
   const [showBorder, setShowBorder] = useState(true);
   const [showSearchIcon, setSearchIcon] = useState(false);
   // const {setActiveSearch} = useContext(ShopContext);
@@ -19,6 +21,15 @@ const Navbar = () => {
     setShowBorder(path !== "/");
     setSearchIcon(path === "/collection");
   }, [path]);
+
+  //  Effect to retrieve username from localStorage when the component mounts
+   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    console.log(user);
+    if (user) {
+      setusername(user.username);  // Set the username from localStorage
+    }
+  }, []);
 
   useEffect(() => {
     // Initialize Bootstrap tooltips
@@ -127,6 +138,7 @@ const Navbar = () => {
               >
                 <i className="bx bx-user fs-little-big c-gray cursor"></i>
               </NavLink>
+              <p>Hi, {username}</p>
               <button className="bg-transparent border-0 position-relative">
                 <i className="bx bx-shopping-bag fs-little-big c-gray cursor"></i>
                 <span className="bg-black d-block rounded-circle cart-icon c-white">
