@@ -1,15 +1,18 @@
 import { Link, NavLink } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Tooltip } from "bootstrap";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
-  const [username, setusername] = useState("");
+  // const [username, setusername] = useState("");
 
   const [showBorder, setShowBorder] = useState(true);
   const [showSearchIcon, setSearchIcon] = useState(false);
   // const {setActiveSearch} = useContext(ShopContext);
+
+  const { user, logout } = useAuth(); // Access user and logout from context
 
   const path = window.location.pathname;
   // useEffect(() => {
@@ -22,14 +25,20 @@ const Navbar = () => {
     setSearchIcon(path === "/collection");
   }, [path]);
 
-  //  Effect to retrieve username from localStorage when the component mounts
-   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    console.log(user);
-    if (user) {
-      setusername(user.username);  // Set the username from localStorage
-    }
-  }, []);
+  // //  Effect to retrieve username from localStorage when the component mounts
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem("user"));
+  //   console.log(user);
+  //   if (user) {
+  //     setusername(user.username); // Set the username from localStorage
+  //   }
+  // }, []);
+
+  const handleLogout = () => {
+    logout(); // Clear user data from the context
+    localStorage.removeItem("user"); // clear user data from local storage
+    window.location.reload(); // Reload the page to reflect the changes
+  };
 
   useEffect(() => {
     // Initialize Bootstrap tooltips
@@ -134,12 +143,12 @@ const Navbar = () => {
                 to="/login"
                 data-bs-toggle="tooltip"
                 data-bs-placement="bottom"
-                data-bs-title="Login"
+                title="Login"
               >
                 <i className="bx bx-user fs-little-big c-gray cursor"></i>
               </NavLink>
 
-               {/* User Info
+              {/* User Info
           {username && (
             <div className="user-info d-flex align-items-center">
               <span className="me-3">Welcome, {username || "Guest"}</span>
@@ -155,6 +164,30 @@ const Navbar = () => {
               </button>
             </div>
           )} */}
+
+              {/* <div className="right d-flex align-items-center gap-3">
+                {user ? (
+                  <span className="fw-bold">Welcome, {user.username}</span>
+                ) : (
+                  "Guest"
+                )}
+              </div> */}
+
+              <div className="right d-flex align-items-center gap-3">
+                {user ? (
+                  <span className="fw-bold">Welcome, {user.username}</span>
+                ) : (
+                  <span>Guest</span>
+                )}
+              </div>
+              {user && (
+                <button
+                  onClick={handleLogout}
+                  className="btn btn-outline-danger btn-sm"
+                >
+                  Logout
+                </button>
+              )}
 
               <button className="bg-transparent border-0 position-relative">
                 <i className="bx bx-shopping-bag fs-little-big c-gray cursor"></i>

@@ -259,11 +259,14 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { motion } from "framer-motion";
 import HeaderDashed from "../components/HeaderDashed";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState(null); // To store backend validation errors
   const navigate = useNavigate();
+
+  const { login } = useAuth(); // Access login function
 
   const handleSubmit = async (values) => {
     try {
@@ -288,11 +291,9 @@ const Signup = () => {
       if (response.status === 400) {
         return alert(result.message); // Backend validation errors
       } else {
-        // Store the token in localStorage (or sessionStorage)
-        localStorage.setItem('token', result.token);
-        // Optionally, you can store the user data as well
-        localStorage.setItem("user", JSON.stringify(result.newUser));
-        navigate("/"); // Navigate to home page on successful signup
+        // Update context and navigate
+        login(result.newUser); // Update context
+        navigate("/");
         alert("User successfully created");
       }
     } catch (error) {
