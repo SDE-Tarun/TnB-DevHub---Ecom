@@ -7,7 +7,7 @@
   position: fixed; /* Ensure it stays centered even if the page scrolls */
   top: 0;
   left: 0;
-   /* Optional: Add a semi-transparent background */
+  /* Optional: Add a semi-transparent background */
   z-index: 9999; /* Ensure the loader appears on top of other content */
   background-color: #f8f4f4;
 }

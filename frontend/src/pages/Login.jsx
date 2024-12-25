@@ -105,18 +105,18 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-console.log(response);
+      console.log(response);
 
       if (response.ok) {
         const data = await response.json();
         console.log("Login successful", data);
-        alert('User logged in successfully');
+        alert("User logged in successfully");
         navigate("/");
         // Handle successful login here (e.g., redirect)
       } else {
         const data = await response.json();
         setServerErrors(data.errors || []);
-        alert('Credentials do not Match');
+        alert("Credentials do not Match");
       }
     } catch (error) {
       console.error("Error during login:", error);

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { motion } from "framer-motion";
-import { check } from "express-validator";  // import express-validator methods
+import { check } from "express-validator"; // import express-validator methods
 import HeaderDashed from "../components/HeaderDashed";
 
 const AdminPanel = () => {

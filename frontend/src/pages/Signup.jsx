@@ -123,15 +123,15 @@ const Signup = () => {
         },
         body: JSON.stringify(values),
       });
-      
+
       const result = await response.json();
       console.log(result);
-      
+
       if (response.status === 400) {
         return alert(result.message); // Backend validation errors
       } else {
         navigate("/"); // Navigate to login page on successful signup
-        alert('User successfully created');
+        alert("User successfully created");
       }
     } catch (error) {
       console.error("Error during signup:", error);
@@ -144,18 +144,23 @@ const Signup = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="Signup-Page text-center sec-padd"
-      style={{ minHeight: '100vh'
-       }}
+      style={{ minHeight: "100vh" }}
     >
-      <div className="container d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+      <div
+        className="container d-flex flex-column justify-content-center align-items-center"
+        style={{ minHeight: "100vh" }}
+      >
         <HeaderDashed head1="Sign" head2="UP" />
 
-        <Formik 
+        <Formik
           initialValues={{ username: "", email: "", password: "" }}
           onSubmit={handleSubmit}
         >
           {({ isSubmitting }) => (
-            <Form className="mt-5 d-flex flex-column gap-5 align-items-center border p-4" style={{ maxWidth: '500px', width: '100%' }}>
+            <Form
+              className="mt-5 d-flex flex-column gap-5 align-items-center border p-4"
+              style={{ maxWidth: "500px", width: "100%" }}
+            >
               <div className="d-flex flex-column align-items-start w-100">
                 <label htmlFor="username" className="mb-2 fs-4">
                   Username:
@@ -248,5 +253,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
-
