@@ -190,7 +190,7 @@ const Footer = () => {
             >
               <Link to="/" className="logo text-decoration-none text-dark">
                 <h3 className="fs-3 mb-0">
-                  My <span className="fw-medium c-pink">Shop</span>
+                  Comfy<span className="fw-medium c-pink">Haven</span>
                 </h3>
               </Link>
               <p className="mt-3">

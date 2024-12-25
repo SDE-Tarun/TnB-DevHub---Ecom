@@ -46,7 +46,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="logo text-decoration-none text-dark">
             <h3 className="fs-5 mb-0">
-              My <span className="fw-medium c-pink">Shop</span>
+              Comfy<span className="fw-medium c-pink">Haven</span>
             </h3>
           </Link>
 

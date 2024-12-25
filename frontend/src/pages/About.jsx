@@ -151,7 +151,7 @@ const About = () => {
             sideText={
               <>
                 <p>
-                  At [Your Website Name], we are passionate about enhancing your
+                  At ComfyHaven, we are passionate about enhancing your
                   living spaces with elegance and comfort. Our journey began
                   with a commitment to offering premium bedsheets and comforters
                   that combine quality, style, and affordability. We take pride
@@ -169,7 +169,7 @@ const About = () => {
                 <div className="mission">
                   <h4 className="my-3 mt-4 c-black">Our Mission</h4>
                   <p className="mb-0">
-                    Our mission at [Your Website Name] is to empower customers
+                    Our mission at ComfyHaven is to empower customers
                     with choice, convenience, and confidence. We&rsquo;re
                     dedicated to providing a seamless shopping experience that
                     exceeds expectations, from browsing and ordering to delivery

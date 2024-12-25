@@ -124,7 +124,7 @@ const Contact = () => {
                 </div>
                 {/* Careers Information */}
                 <motion.div className="careers mt-5" variants={fadeInUp}>
-                  <h4 className="c-d-gray">Careers at Algohary Shop</h4>
+                  <h4 className="c-d-gray">Careers at ComfyHaven</h4>
                   <span className="d-block my-4">
                     Learn more about our teams and job openings.
                   </span>
