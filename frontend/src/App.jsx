@@ -9,6 +9,7 @@ import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Loader from "./components/Loader";
+import WelcomePage from "./components/WelcomePage"; // Import the WelcomePage component
 
 // Importing styles and scripts
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -37,7 +38,8 @@ const App = () => {
       ) : (
         <AnimatePresence>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<WelcomePage />} /> {/* Welcome page first */}
+            <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/admin-panel" element={<AdminPanel />} />
