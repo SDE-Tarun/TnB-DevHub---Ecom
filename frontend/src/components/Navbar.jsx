@@ -138,7 +138,6 @@ const Navbar = () => {
               >
                 <i className="bx bx-user fs-little-big c-gray cursor"></i>
               </NavLink>
-              <p>Hi, {username}</p>
               <button className="bg-transparent border-0 position-relative">
                 <i className="bx bx-shopping-bag fs-little-big c-gray cursor"></i>
                 <span className="bg-black d-block rounded-circle cart-icon c-white">
