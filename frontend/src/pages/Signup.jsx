@@ -292,7 +292,7 @@ const Signup = () => {
         localStorage.setItem('token', result.token);
         // Optionally, you can store the user data as well
         localStorage.setItem("user", JSON.stringify(result.newUser));
-        navigate("/home"); // Navigate to home page on successful signup
+        navigate("/"); // Navigate to home page on successful signup
         alert("User successfully created");
       }
     } catch (error) {
