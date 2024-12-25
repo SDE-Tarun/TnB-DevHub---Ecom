@@ -138,6 +138,24 @@ const Navbar = () => {
               >
                 <i className="bx bx-user fs-little-big c-gray cursor"></i>
               </NavLink>
+
+               {/* User Info
+          {username && (
+            <div className="user-info d-flex align-items-center">
+              <span className="me-3">Welcome, {username || "Guest"}</span>
+              <button
+                className="btn btn-outline-danger btn-sm"
+                onClick={() => {
+                  localStorage.clear();
+                  setusername("");
+                  window.location.reload();
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          )} */}
+
               <button className="bg-transparent border-0 position-relative">
                 <i className="bx bx-shopping-bag fs-little-big c-gray cursor"></i>
                 <span className="bg-black d-block rounded-circle cart-icon c-white">
