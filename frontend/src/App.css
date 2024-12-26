@@ -296,6 +296,10 @@ nav {
 	.login-link.active i {
 		color: var(--c-pink) !important;
 	}
+
+	.logout-link.active i {
+		color: var(--c-pink) !important;
+	}
 }
 .search-field input {
 	width: 80%;

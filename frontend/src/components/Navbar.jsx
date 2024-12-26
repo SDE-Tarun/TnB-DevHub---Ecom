@@ -183,9 +183,13 @@ const Navbar = () => {
               {user && (
                 <button
                   onClick={handleLogout}
-                  className="btn btn-outline-danger btn-sm"
+                  className="logout-link text-deoration-none"
+                  data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                  title="Logout"
                 >
-                  Logout
+                  
+                  <i class='bx bx-log-out fs-little-big c-gray cursor'></i>
                 </button>
               )}
 
@@ -195,6 +199,9 @@ const Navbar = () => {
                   0
                 </span>
               </button>
+
+              
+
             </div>
             <button
               onClick={() => setShowMenu((prev) => !prev)}
