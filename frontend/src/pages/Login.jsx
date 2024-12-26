@@ -242,6 +242,7 @@ const Login = () => {
         navigate("/");
       } else {
         const data = await response.json();
+        alert('Please signup first');
         setServerErrors(data.errors || []);
       }
     } catch (error) {
