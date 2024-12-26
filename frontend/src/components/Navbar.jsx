@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Tooltip } from "bootstrap";
 import { useAuth } from "../context/AuthContext";
+import HeaderDashed from "./HeaderDashed";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -173,12 +174,13 @@ const Navbar = () => {
                 )}
               </div> */}
 
-              <div className="right d-flex align-items-center gap-3">
-                {user ? (
-                  <span className="fw-bold">Welcome, {user.username}</span>
-                ) : (
-                  <span>Guest</span>
-                )}
+              <div className="right d-flex align-items-center gap-2">
+                {/* HeaderDashed with Username */}
+        <HeaderDashed
+          head1="Hi,"
+          username={user?.username || "Guest"} // Pass the username
+          classStyle="custom-welcome-style" // Add any required custom styling
+        />
               </div>
               {user && (
                 <button

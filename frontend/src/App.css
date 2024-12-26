@@ -598,3 +598,14 @@ nav ul a.active {
 		flex-basis: calc((100% / 5) - 10.5px);
 	}
 }
+
+.custom-welcome-style {
+	font-size: 0.975rem; /* Adjust font size */
+	font-weight: bold;   /* Optional: Make it bold */
+	color: #333;         /* Optional: Customize color */
+  }
+  
+  .custom-welcome-style .c-pink {
+	font-size: 1.0rem; /* Adjust username font size */
+	color: #bf83a6;    /* Optional: Customize username color */
+  }
