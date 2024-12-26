@@ -176,22 +176,21 @@ const Navbar = () => {
 
               <div className="right d-flex align-items-center gap-2">
                 {/* HeaderDashed with Username */}
-        <HeaderDashed
-          head1="Hi,"
-          username={user?.username || "Guest"} // Pass the username
-          classStyle="custom-welcome-style" // Add any required custom styling
-        />
+                <HeaderDashed
+                  head1="Hi,"
+                  username={user?.username || "Guest"} // Pass the username
+                  classStyle="custom-welcome-style" // Add any required custom styling
+                />
               </div>
               {user && (
                 <button
                   onClick={handleLogout}
-                  className="logout-link text-deoration-none"
+                  className="logout-link text-decoration-none"
                   data-bs-toggle="tooltip"
-                data-bs-placement="bottom"
+                  data-bs-placement="bottom"
                   title="Logout"
                 >
-                  
-                  <i class='bx bx-log-out fs-little-big c-gray cursor'></i>
+                  <i class="bx bx-log-out fs-little-big c-gray cursor"></i>
                 </button>
               )}
 
@@ -201,9 +200,6 @@ const Navbar = () => {
                   0
                 </span>
               </button>
-
-              
-
             </div>
             <button
               onClick={() => setShowMenu((prev) => !prev)}
