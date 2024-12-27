@@ -57,7 +57,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="py-3" style={{ backgroundColor: "#e3dcd5" }}>
+    <nav className="py-3">
       <div
         className={`container position-relative  d-flex justify-content-between align-items-center flex-column ${
           showBorder ? "showLine" : ""
@@ -65,7 +65,7 @@ const Navbar = () => {
       >
         <main className="col-12 d-flex justify-content-between align-items-center">
           {/* Logo */}
-          <Link to="/" className="logo text-decoration-none text-dark">
+          <Link to="/" className="logo text-decoration-none text-light">
             <h3 className="fs-5 mb-0">
               Comfy<span className="fw-medium c-pink">Haven</span>
             </h3>
@@ -73,7 +73,7 @@ const Navbar = () => {
 
           {/* Mobile Menu */}
           <ul
-            style={{ backgroundColor: "#e3dcd5" }}
+            style={{ backgroundColor: "#001F3F" }}
             className={`position-fixed p-0 top-0 end-0 z-1 d-flex flex-column ${
               showMenu ? "show" : ""
             }`}
