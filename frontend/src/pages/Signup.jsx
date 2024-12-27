@@ -3,14 +3,14 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { motion } from "framer-motion";
 import HeaderDashed from "../components/HeaderDashed";
 import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+// import { useAuth } from "../context/AuthContext";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState(null); // To store backend validation errors
   const navigate = useNavigate();
 
-  const { login } = useAuth(); // Access login function
+  // const { login } = useAuth(); // Access login function
 
   const handleSubmit = async (values) => {
     try {
@@ -34,8 +34,8 @@ const Signup = () => {
         return alert(result.message); // Backend validation errors
       } else {
         // Update context and navigate
-        login(result.newUser); // Update context
-        navigate("/");
+        // login(result.newUser); // Update context
+        navigate("/login");
         alert("User successfully created");
       }
     } catch (error) {

@@ -3,11 +3,13 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { motion } from "framer-motion";
 import HeaderDashed from "../components/HeaderDashed";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [serverErrors, setServerErrors] = useState([]);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (values) => {
     setServerErrors([]);
@@ -21,11 +23,12 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
+        // Store user data in AuthContext and localStorage
+        login(data.user);
         alert("User logged in successfully");
         navigate("/");
       } else {
         const data = await response.json();
-        alert("Please signup first");
         setServerErrors(data.errors || []);
       }
     } catch (error) {
