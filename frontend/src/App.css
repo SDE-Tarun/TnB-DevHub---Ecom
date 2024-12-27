@@ -503,6 +503,13 @@ nav ul a.active {
   .sec-padd {
     padding: 70px 0 40px;
   }
+
+  nav ul a:hover {
+    background-color:#ffff !important; /* Dark navy blue */
+    color: var(--c-pink) !important; /* Or a color that contrasts */
+}
+
+
   /* Navbar */
   nav .toggleBtn,
   nav .backMenu {
