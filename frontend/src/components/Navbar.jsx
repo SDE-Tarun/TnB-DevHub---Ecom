@@ -136,7 +136,7 @@ const Navbar = () => {
             <div className="icons d-flex gap-1 gap-sm-3">
               {showSearchIcon && (
                 <i
-                  className="bx bx-search-alt-2 fs-little-big c-gray cursor"
+                  className="bx bx-search-alt-2 fs-little-big c-gray cursor mt-2"
                   onClick={() => setActiveSearch(true)}
                 ></i>
               )}
