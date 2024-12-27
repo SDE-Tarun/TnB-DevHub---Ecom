@@ -141,7 +141,7 @@ const Login = () => {
                 Log In
               </motion.button>
 
-              <button class="cursor-pointer text-black flex gap-2 items-center bg-white px-4 py-2 rounded-lg font-medium text-lg hover:bg-zinc-300 transition-all ease-in duration-200">
+              <button class="cursor-pointer text-black flex gap-2 items-center bg-white px-4 py-2 rounded-lg font-medium text-medium hover:bg-zinc-300 transition-all ease-in duration-200">
                 <svg
                   viewBox="0 0 48 48"
                   xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +167,7 @@ const Login = () => {
                 Continue with Google
               </button>
 
-              <button class="cursor-pointer text-black flex gap-2 items-center bg-white px-4 py-2 rounded-lg font-medium text-lg hover:bg-zinc-300 transition-all ease-in duration-200">
+              <button class="cursor-pointer text-black flex gap-2 items-center bg-white px-4 py-2 rounded-lg font-medium text-medium hover:bg-zinc-300 transition-all ease-in duration-200">
                 {/* <!-- New Mobile Phone Icon --> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

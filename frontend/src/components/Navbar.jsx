@@ -144,7 +144,6 @@ const Navbar = () => {
               <div className="right d-flex align-items-center gap-2 mt-2">
                 {/* HeaderDashed with Username */}
                 <HeaderDashed
-                  head1="Hi,"
                   username={user?.username || "Guest"} // Pass the username
                   classStyle="custom-welcome-style" // Add any required custom styling
                 />
