@@ -7,7 +7,8 @@ const HeaderDashed = ({ head1, head2, paragraph, username, classStyle }) => {
         <span className="c-light-gray">{head1}</span>{" "}
         <span className="c-d-gray">{head2}</span>{" "}
         {/* <span className="line-span wd-40 ms-1"></span> */}
-        {username && <span className="c-pink">{username}</span>} {/* Display username */}
+        {username && <span className="c-pink">{username}</span>}{" "}
+        {/* Display username */}
         {/* <span className="line-span wd-40 ms-1"></span> */}
       </h2>
       {paragraph && <p className="c-gray px-3 fs-small">{paragraph}</p>}
