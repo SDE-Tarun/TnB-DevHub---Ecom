@@ -30,7 +30,7 @@ const loginUser = async (req, res) => {
     res.status(200).json({
       message: "User logged in successfully",
       token,
-      user: { user: user._id, username: user.username },
+      user: { userId: user._id, username: user.username },
     });
   } catch (error) {
     console.log("Error in login, catch block speaking", error);

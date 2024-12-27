@@ -26,7 +26,15 @@ const signupUser = async (req, res) => {
         `Token generated for new user signup process at :-  ${currentTime.getHours()}Hr: ${currentTime.getMinutes()}Min:  ${currentTime.getSeconds()}Sec`
       );
     }
-    res.status(201).json({ message: "Signup successful", token, newUser });
+    res.status(201).json({
+      message: "Signup successful",
+      token,
+      newUser: {
+        _id: newUser._id,
+        username: newUser.username,
+        email: newUser.email,
+      },
+    });
   } catch (error) {
     console.log("Error during the signup process", error);
     res.status(500).json({ message: "Error during signup", error });
