@@ -61,6 +61,7 @@ const App = () => {
       closeOnClick
       rtl={false}
       draggable
+      pauseOnHover={false}
       />
     </div>
   );
