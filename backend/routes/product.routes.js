@@ -1,10 +1,14 @@
-const express = require('express')
+const express = require("express");
 const router = express.Router();
-const ProductModel = require('../models/product.model');
+const {
+  allProducts,
+  singleProduct,
+} = require("../controllers/product/product.controller");
 
-router.get('/home', async (req, res)=>{
-    const products = await ProductModel.find({})
-    res.json({products})
-})
+//API to display all the products
+router.get("/all", allProducts);
+
+// API for fetching single product
+router.get("/single/:id", singleProduct);
 
 module.exports = router;
