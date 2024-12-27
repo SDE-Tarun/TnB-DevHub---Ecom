@@ -269,7 +269,6 @@ nav {
   padding: 10px 20px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
   .container.showLine::before {
-
     content: "";
     position: absolute;
     width: 100%;
@@ -278,6 +277,7 @@ nav {
     bottom: -18px;
     left: 0;
   }
+
   main .logo {
     /* height: 40px; */
     width: 185px;
