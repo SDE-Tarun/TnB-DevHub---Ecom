@@ -59,7 +59,7 @@
 // export default Contact;
 
 import { motion } from "framer-motion";
-import mainImg from "../assets/contact_us.gif";
+import mainImg from "../assets/contact_img.png";
 import DescribedImage from "../components/DescribedImage";
 import HeaderDashed from "../components/HeaderDashed";
 

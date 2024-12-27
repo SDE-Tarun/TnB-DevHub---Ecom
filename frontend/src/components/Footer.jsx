@@ -170,7 +170,7 @@ const Footer = () => {
     <motion.footer
       className="mt-5 sec-padd"
       id="footer"
-      style={{ backgroundColor: "#F5F5F7", color: "#ccc", padding: "20px 0" }}
+      style={{ backgroundColor: "#e3dcd5", color: "#ccc", padding: "20px 0" }}
       initial="hidden"
       animate="visible"
       transition={{ duration: 1 }}
@@ -193,7 +193,7 @@ const Footer = () => {
                   Comfy<span className="fw-medium c-pink">Haven</span>
                 </h3>
               </Link>
-              <p className="mt-3">
+              <p className="mt-3 text-black">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry&apos;s standard
                 dummy text ever since the 1500s, when an unknown printer took a
@@ -203,7 +203,7 @@ const Footer = () => {
 
             {/* Social Links */}
             <motion.div
-              className="social col-12 col-lg text-center"
+              className="social col-12 col-lg text-center text-black"
               variants={fadeInUp}
               transition={{ delay: 0.4 }}
             >
@@ -236,7 +236,7 @@ const Footer = () => {
               variants={fadeInUp}
               transition={{ delay: 0.6 }}
             >
-              <h3 className="mb-3">GET IN TOUCH</h3>
+              <h3 className="mb-3 text-black">GET IN TOUCH</h3>
               <ul className="d-flex flex-column align-items-center align-items-lg-start ps-0 gap-2">
                 <li className="c-gray">+91- 1234567890</li>
                 <li>
@@ -278,7 +278,7 @@ const Footer = () => {
             data-bs-toggle="tooltip"
             data-bs-placement="top"
           >
-            Himanshi Verma
+            TnB DevHub
           </a>
           - All Rights Reserved.
         </motion.div>

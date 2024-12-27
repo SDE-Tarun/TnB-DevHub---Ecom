@@ -101,7 +101,7 @@
 
 import { motion } from "framer-motion";
 import HeaderDashed from "../components/HeaderDashed";
-import mainImg from "../assets/about.gif";
+import mainImg from "../assets/about_us_new.jpg";
 import DescribedImage from "../components/DescribedImage";
 
 const About = () => {
