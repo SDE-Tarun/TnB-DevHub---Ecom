@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import HeaderDashed from "../components/HeaderDashed";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -25,14 +26,16 @@ const Login = () => {
         const data = await response.json();
         // Store user data in AuthContext and localStorage
         login(data.user);
-        alert("User logged in successfully");
+        toast.success("User logged in successfully!");
         navigate("/");
       } else {
         const data = await response.json();
         setServerErrors(data.errors || []);
+        toast.error(data.message);
       }
     } catch (error) {
       console.error("Error during login:", error);
+      toast.error("An unexpected error occurred. Please try again.");
     }
   };
 

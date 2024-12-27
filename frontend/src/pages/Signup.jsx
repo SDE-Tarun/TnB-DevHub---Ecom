@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import HeaderDashed from "../components/HeaderDashed";
 import { useNavigate, Link } from "react-router-dom";
 // import { useAuth } from "../context/AuthContext";
+// React Toastify imports
+import { toast } from 'react-toastify';
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,24 +24,21 @@ const Signup = () => {
         body: JSON.stringify(values),
       });
 
-      console.log(response);
-
       const result = await response.json();
-      console.log(result);
 
       const user = result.newUser;
-      console.log(user);
 
       if (response.status === 400) {
-        return alert(result.message); // Backend validation errors
+        toast.error(result.message); // Show error toast
       } else {
         // Update context and navigate
         // login(result.newUser); // Update context
         navigate("/login");
-        alert("User successfully created");
+        toast.success('User created successfully!'); // Show success toast
       }
     } catch (error) {
       console.error("Error during signup:", error);
+      toast.error("Something went wrong. Please try again!"); // Show generic error toast
     }
   };
 

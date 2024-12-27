@@ -58,7 +58,7 @@ textarea:focus {
 }
 body {
   font-family: "Outfit", sans-serif !important;
-  background-color: #cecfc2fe;
+  /* background-color: #cecfc2fe; */
 }
 ::-webkit-scrollbar {
   width: 5px;

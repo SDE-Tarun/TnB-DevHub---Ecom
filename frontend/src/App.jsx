@@ -18,6 +18,10 @@ import "boxicons/css/boxicons.min.css";
 import "./App.css";
 import { AnimatePresence } from "framer-motion";
 
+// React Toastify imports
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = () => {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
@@ -48,6 +52,16 @@ const App = () => {
         </AnimatePresence>
       )}
       <Footer />
+      {/* React Toastify container */}
+      <ToastContainer 
+      position="bottom-right"
+      autoClose={3000} // auto-close duration in ms
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      draggable
+      />
     </div>
   );
 };
