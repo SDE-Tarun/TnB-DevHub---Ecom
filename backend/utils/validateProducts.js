@@ -1,5 +1,5 @@
 const validateProducts = (products) => {
-  products.forEach((product) => {
+  for (const product of products) {
     if (!product.title || !product.price) {
       return {
         valid: "false",
@@ -12,7 +12,7 @@ const validateProducts = (products) => {
         message: "Price of product cannot be less than 0",
       };
     }
-  });
+  }
   return { valid: "true", message: "Product fields are validated" };
 };
 

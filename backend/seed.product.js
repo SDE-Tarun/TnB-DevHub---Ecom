@@ -1,18 +1,27 @@
-// const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 const Product = require("./models/product.model");
-const connectToDatabase = require("./db/db");
 const validateProducts = require("./utils/validateProducts");
+const mongoose = require("mongoose");
 
-connectToDatabase();
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("The database is successfully connected!");
+  })
+  .catch((err) => {
+    console.log("Error in connecting to database from seed file", err);
+    process.exit(1);
+  });
 
 const dummy_products = [
   {
     title: "Floral Print Bedsheet",
     price: 899,
-    images: ["floral_bedsheet.jpg"],
+    images: ["floral_bedsheet.jpg"], //carousel ka use hoga
     category: "Home Furnishing",
     description: "Soft cotton bedsheet with vibrant floral prints.",
-    stock: 25,
+    stock: 25, //iski need nhi h
     sizes: ["Single", "Double"],
     material: "Cotton",
     color: "Blue",
@@ -20,6 +29,7 @@ const dummy_products = [
       average: 4.5,
       totalReviews: 120,
     },
+    //admin can do everything
   },
   {
     title: "Luxury Comforter",
