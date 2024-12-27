@@ -602,6 +602,7 @@ nav ul a.active {
   font-size: 0.975rem; /* Adjust font size */
   font-weight: bold; /* Optional: Make it bold */
   color: #333; /* Optional: Customize color */
+  text-transform: uppercase;
 }
 
 .custom-welcome-style .c-pink {
