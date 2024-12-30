@@ -31,7 +31,7 @@ const userSchema = mongoose.Schema(
     }, //for mobile signup
     googleId: {
       type: String,
-      uniqueLtrue,
+      unique:true,
       sparse: true,
     },
     authMethod: {

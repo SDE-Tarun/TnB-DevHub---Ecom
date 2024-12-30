@@ -20,11 +20,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const userRoute = require("./routes/user.routes");
-const productRoute = require("./routes/product.routes");
 const googleAuthRoute = require("./routes/googleAuth.routes");
+const productRoute = require("./routes/product.routes");
 app.use("/api/auth", userRoute);
-app.use("/api/product", productRoute);
 app.use("/api/auth/google", googleAuthRoute);
+app.use("/api/product", productRoute);
 
 const port = process.env.PORT || 3000;
 
