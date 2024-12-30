@@ -14,7 +14,7 @@ const Login = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:3000/auth/google');
+      const response = await fetch('http://localhost:3000/api/auth/google/login');
       const data = await response.json();
       window.location.href = data.authUrl; // Redirect to Google Auth
     } catch (error) {
@@ -154,7 +154,7 @@ const Login = () => {
                 Log In
               </motion.button>
 
-              <button onClick={handleGoogleLogin} class="cursor-pointer text-black flex gap-2 items-center bg-white px-4 py-2 rounded-lg font-medium text-medium hover:bg-zinc-300 transition-all ease-in duration-200">
+              <button type="button" onClick={handleGoogleLogin} class="cursor-pointer text-black flex gap-2 items-center bg-white px-4 py-2 rounded-lg font-medium text-medium hover:bg-zinc-300 transition-all ease-in duration-200">
                 <svg
                   viewBox="0 0 48 48"
                   xmlns="http://www.w3.org/2000/svg"
