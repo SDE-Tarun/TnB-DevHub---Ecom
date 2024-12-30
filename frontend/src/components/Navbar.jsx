@@ -156,7 +156,7 @@ const Navbar = () => {
                 data-bs-placement="bottom"
                 title="Login"
               >
-                <i className="bx bx-user fs-little-big c-gray cursor"></i>
+                <i className="bx bx-user fs-little-big c-gray cursor" style={{backgroundColor: '#007bff'}}></i>
               </NavLink>
 
               {user && (
