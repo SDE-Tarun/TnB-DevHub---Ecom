@@ -19,7 +19,7 @@ const signupUser = async (req, res) => {
     }
     const hashPassword = await hashedPassword(password);
     const newUser = await createUser(username, email, hashPassword);
-    const token = generateToken(newUser._id);
+    const token = generateToken(newUser._id, newUser.email);
     if (token) {
       const currentTime = new Date();
       console.log(
