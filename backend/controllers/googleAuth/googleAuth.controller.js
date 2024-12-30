@@ -1,6 +1,7 @@
 const { OAuth2Client } = require("google-auth-library");
 const dotenv = require("dotenv");
 dotenv.config();
+const { generateToken } = require("../../utils/tokenGenerator");
 
 const UserModel = require("../../models/user.models");
 
@@ -20,6 +21,9 @@ const loginPage = (req, res) => {
 
 const callback = async (req, res) => {
   const { code } = req.query;
+  if (!code) {
+    return res.status(400).json({ message: "Invalid request" });
+  }
   try {
     const { tokens } = await client.getToken(code);
     client.setCredentials(tokens);
