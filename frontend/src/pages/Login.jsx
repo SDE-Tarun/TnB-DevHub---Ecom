@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import HeaderDashed from "../components/HeaderDashed";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,45 +16,46 @@ const Login = () => {
     const handleCallback = async () => {
       const params = new URLSearchParams(window.location.search);
       console.log(params);
-      
-      const code = params.get('code');
+
+      const code = params.get("code");
       console.log(code);
-      
-      
-      if(code){
+
+      if (code) {
         try {
-          const response = await fetch(`http://localhost:3000/api/auth/google/callback?code=${code}`);
+          const response = await fetch(
+            `http://localhost:3000/api/auth/google/callback?code=${code}`
+          );
           const data = await response.json();
-          if(data.token){
-            localStorage.setItem('googleToken', data.token);
-            toast.success('Google login successful');
-            navigate('/');
-          }
-          else{
-            toast.error('Google login failed');
+          if (data.token) {
+            localStorage.setItem("googleToken", data.token);
+            toast.success("Google login successful");
+            window.location.href = "/"; // Redirect to homepage
+            // navigate('/');
+          } else {
+            toast.error("Google login failed");
           }
         } catch (error) {
-          console.log(error, 'Error in google login callback');
+          console.log(error, "Error in google login callback");
           toast.error("Something went wrong. Please try again!"); // Show generic error toast
         }
       }
-    }
+    };
     handleCallback();
   }, [navigate]);
-  
 
   const handleGoogleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/auth/google/login');
+      const response = await fetch(
+        "http://localhost:3000/api/auth/google/login"
+      );
       const data = await response.json();
-      if(data.authUrl){
+      if (data.authUrl) {
         window.location.href = data.authUrl; // Redirect to Google Auth
+      } else {
+        toast.error("Failed to login with Google");
       }
-      else {
-          toast.error("Failed to login with Google");
-        }
     } catch (error) {
-      console.error('Error fetching auth URL:', error);
+      console.error("Error fetching auth URL:", error);
       toast.error("Something went wrong. Please try again!"); // Show generic error toast
     }
   };
@@ -191,7 +192,11 @@ const Login = () => {
                 Log In
               </motion.button>
 
-              <button type="button" onClick={handleGoogleLogin} class="cursor-pointer text-black flex gap-2 items-center bg-white px-4 py-2 rounded-lg font-medium text-medium hover:bg-zinc-300 transition-all ease-in duration-200">
+              <button
+                type="button"
+                onClick={handleGoogleLogin}
+                class="cursor-pointer text-black flex gap-2 items-center bg-white px-4 py-2 rounded-lg font-medium text-medium hover:bg-zinc-300 transition-all ease-in duration-200"
+              >
                 <svg
                   viewBox="0 0 48 48"
                   xmlns="http://www.w3.org/2000/svg"
