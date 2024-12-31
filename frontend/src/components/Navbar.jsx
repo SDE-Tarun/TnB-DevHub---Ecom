@@ -310,13 +310,11 @@ const Navbar = () => {
 
               <div className="right d-flex align-items-center gap-2 mt-2">
                 {/* HeaderDashed with Username */}
-                {user ? (
+                {user && (
                   <HeaderDashed
-                    username={user.username || "Guest"} // Display the user's username if logged in
+                    username={user.username || "GUEST"} // Display the user's username if logged in
                     classStyle="custom-welcome-style" // Add any required custom styling
                   />
-                ) : (
-                  <span>Welcome, Guest</span>
                 )}
               </div>
 
@@ -329,7 +327,10 @@ const Navbar = () => {
                   data-bs-placement="bottom"
                   title="Login"
                 >
-                  <i className="bx bx-user fs-little-big c-gray cursor" style={{ backgroundColor: "#007bff" }}></i>
+                  <i
+                    className="bx bx-user fs-little-big c-gray cursor"
+                    style={{ backgroundColor: "#007bff" }}
+                  ></i>
                 </NavLink>
               )}
 
@@ -372,4 +373,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
