@@ -1,7 +1,7 @@
 const { OAuth2Client } = require("google-auth-library");
 const dotenv = require("dotenv");
 dotenv.config();
-const { generateToken } = require("../../utils/tokenGenerator");
+const { generateToken } = require('../../utils/tokenGenerator');
 
 const UserModel = require("../../models/user.models");
 
@@ -49,9 +49,9 @@ const callback = async (req, res) => {
     }
 
     const jwtToken = generateToken(user._id, email);
-    res.json({ token: jwtToken });
+    res.status(200).json({ token: jwtToken });
   } catch (error) {
-    console.log(err);
+    console.log(error);
     res.status(500).json({ error: "true", message: "Internal server error" });
   }
 };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { motion } from "framer-motion";
 import HeaderDashed from "../components/HeaderDashed";
@@ -12,13 +12,50 @@ const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
 
+  useEffect(() => {
+    const handleCallback = async () => {
+      const params = new URLSearchParams(window.location.search);
+      console.log(params);
+      
+      const code = params.get('code');
+      console.log(code);
+      
+      
+      if(code){
+        try {
+          const response = await fetch(`http://localhost:3000/api/auth/google/callback?code=${code}`);
+          const data = await response.json();
+          if(data.token){
+            localStorage.setItem('googleToken', data.token);
+            toast.success('Google login successful');
+            navigate('/');
+          }
+          else{
+            toast.error('Google login failed');
+          }
+        } catch (error) {
+          console.log(error, 'Error in google login callback');
+          toast.error("Something went wrong. Please try again!"); // Show generic error toast
+        }
+      }
+    }
+    handleCallback();
+  }, [navigate]);
+  
+
   const handleGoogleLogin = async () => {
     try {
       const response = await fetch('http://localhost:3000/api/auth/google/login');
       const data = await response.json();
-      window.location.href = data.authUrl; // Redirect to Google Auth
+      if(data.authUrl){
+        window.location.href = data.authUrl; // Redirect to Google Auth
+      }
+      else {
+          toast.error("Failed to login with Google");
+        }
     } catch (error) {
       console.error('Error fetching auth URL:', error);
+      toast.error("Something went wrong. Please try again!"); // Show generic error toast
     }
   };
 
