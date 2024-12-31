@@ -26,8 +26,12 @@ const Login = () => {
             `http://localhost:3000/api/auth/google/callback?code=${code}`
           );
           const data = await response.json();
-          if (data.token) {
+
+          if (data.token && data.user) {
             localStorage.setItem("googleToken", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
+            // Update the AuthContext with the user data
+            login(data.user);
             toast.success("Google login successful");
             window.location.href = "/"; // Redirect to homepage
             // navigate('/');
@@ -41,7 +45,7 @@ const Login = () => {
       }
     };
     handleCallback();
-  }, [navigate]);
+  }, [navigate, login]);
 
   const handleGoogleLogin = async () => {
     try {
