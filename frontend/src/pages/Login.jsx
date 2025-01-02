@@ -13,7 +13,11 @@ const Login = () => {
   const { login } = useAuth();
 
   useEffect(() => {
+    console.log('useefect block entered');
+    
     const handleCallback = async () => {
+      console.log('handlecallback function block entered');
+      
       const params = new URLSearchParams(window.location.search);
       console.log(params);
 
@@ -21,13 +25,22 @@ const Login = () => {
       console.log(code);
 
       if (code) {
+        console.log('code is available');
         try {
+          console.log('try block entered');
+          
           const response = await fetch(
             `http://localhost:3000/api/auth/google/callback?code=${code}`
           );
+          console.log(response);
+          
           const data = await response.json();
+          console.log(data);
+          
 
           if (data.token && data.user) {
+            console.log('if block of token entered');
+            
             localStorage.setItem("googleToken", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
             // Update the AuthContext with the user data
@@ -48,12 +61,21 @@ const Login = () => {
   }, [navigate, login]);
 
   const handleGoogleLogin = async () => {
+    console.log('handleGooglelogin function block entered');
+    
     try {
+      console.log('Entered try block of google login');
+      
       const response = await fetch(
         "http://localhost:3000/api/auth/google/login"
       );
+      console.log(response);
+      
       const data = await response.json();
+      console.log(data);
+      
       if (data.authUrl) {
+        console.log('Google login url obtained');
         window.location.href = data.authUrl; // Redirect to Google Auth
       } else {
         toast.error("Failed to login with Google");
