@@ -18,7 +18,9 @@ const dummy_products = [
   {
     title: "Floral Print Bedsheet",
     price: 899,
-    images: ["floral_bedsheet.jpg"], //carousel ka use hoga
+    images: [
+      "https://plus.unsplash.com/premium_photo-1670869816769-c64fbc7b9c4c?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    ], //carousel ka use hoga
     category: "Home Furnishing",
     description: "Soft cotton bedsheet with vibrant floral prints.",
     stock: 25, //iski need nhi h
@@ -44,7 +46,9 @@ const dummy_products = [
   {
     title: "Abstract Design Bedsheet",
     price: 1199,
-    images: ["abstract_design.jpg"],
+    images: [
+      "https://plus.unsplash.com/premium_photo-1670869816731-97a307d1c7ab?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    ],
     color: "Gray",
   },
   {
@@ -68,14 +72,18 @@ const dummy_products = [
   {
     title: "Dual-tone Comforter",
     price: 2899,
-    images: ["dual_tone_comforter.jpg"],
+    images: [
+      "https://plus.unsplash.com/premium_photo-1684164600449-da3eeeb6c023?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    ],
     material: "Polyester",
     sizes: ["Double"],
   },
   {
     title: "Kids Cartoon Bedsheet",
     price: 999,
-    images: ["cartoon_bedsheet.jpg"],
+    images: [
+      "https://plus.unsplash.com/premium_photo-1670953687951-5a56f8606cc4?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    ],
     description: "Bedsheet featuring popular cartoon characters.",
     category: "Kids Bedding",
     stock: 30,

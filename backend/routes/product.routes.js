@@ -3,12 +3,28 @@ const router = express.Router();
 const {
   allProducts,
   singleProduct,
-} = require("../controllers/product/product.controller");
+} = require("../controllers/product/getProduct.controller");
 
-//API to display all the products
+// Performing CRUD for the product management
+
+// Reading of products----->
+
+// 1 .API to display all the products
 router.get("/all", allProducts);
 
-// API for fetching single product
+// 2. API for fetching single product
 router.get("/single/:id", singleProduct);
+
+// Creating of products------>
+// 1. API to create a new product
+
+// middleware function to provide the validation result
+const validateRequest = require("../middlewares/validateRequests");
+// joi schema for product data validation
+const productSchema = require("../validations/product.validation");
+// controller function to add product
+const addProduct = require("../controllers/product/addProduct.controller");
+
+router.post("/add", validateRequest(productSchema), addProduct);
 
 module.exports = router;
