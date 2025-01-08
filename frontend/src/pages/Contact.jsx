@@ -67,7 +67,7 @@ const Contact = () => {
                   </motion.div>
                 </div>
                 {/* Careers Information */}
-                <motion.div className="careers mt-5" variants={fadeInUp}>
+                {/* <motion.div className="careers mt-5" variants={fadeInUp}>
                   <h4 className="c-d-gray">Careers at ComfyHaven</h4>
                   <span className="d-block my-4">
                     Learn more about our teams and job openings.
@@ -75,7 +75,7 @@ const Contact = () => {
                   <button className="btn py-3 px-4 border-out-d-gray rounded-0">
                     Explore Jobs
                   </button>
-                </motion.div>
+                </motion.div> */}
               </>
             }
           />
