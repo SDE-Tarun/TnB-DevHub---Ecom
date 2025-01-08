@@ -26,18 +26,27 @@ const callback = async (req, res) => {
   }
   try {
     const { tokens } = await client.getToken(code);
+    if (!tokens) {
+      return res.status(404).json({ message: "Token not found" });
+    }
     client.setCredentials(tokens);
 
     const ticket = await client.verifyIdToken({
       idToken: tokens.id_token,
       audience: process.env.GOOGLE_CLIENT_ID,
     });
-
+    if (!ticket) {
+      return res.status(404).json({ message: "Ticket not found" });
+    }
     const payload = ticket.getPayload();
+    if(!payload){
+      return res.status(404).json({message:"Payload not found"})
+    }
     const { email, name, picture, sub } = payload;
 
     // check or create user
     let user = await UserModel.findOne({ email });
+    console.log("User already found", user);
     if (!user) {
       user = await UserModel.create({
         email,
