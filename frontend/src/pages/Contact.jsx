@@ -1,101 +1,11 @@
-// import { motion } from "framer-motion";
-// import mainImg from "../assets/contact_img.png";
-// import DescribedImage from "../components/DescribedImage";
-// import HeaderDashed from "../components/HeaderDashed";
-
-// const Contact = () => {
-//   // Animation variants
-//   const fadeInUp = {
-//     hidden: { opacity: 0, y: 50 },
-//     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-//   };
-
-//   const staggerContainer = {
-//     hidden: { opacity: 0 },
-//     visible: {
-//       opacity: 1,
-//       transition: {
-//         staggerChildren: 0.3,
-//       },
-//     },
-//   };
-
-//   return (
-//     <motion.div
-//       initial={{ opacity: 0 }}
-//       animate={{ opacity: 1 }}
-//       exit={{ opacity: 0 }}
-//       className="contact-page text-center py-3 pt-5"
-//     >
-//       <motion.div
-//         className="container"
-//         variants={staggerContainer}
-//         initial="hidden"
-//         animate="visible"
-//       >
-//         {/* Header with dashed style */}
-//         <motion.div variants={fadeInUp}>
-//           <HeaderDashed
-//             head1="CONTACT"
-//             head2="US"
-//             classStyle="fw-normal fs-3"
-//           />
-//         </motion.div>
-
-//         {/* Described Image Section */}
-//         <motion.div variants={fadeInUp}>
-//           <DescribedImage
-//             img={mainImg}
-//             imgTitle="desk image"
-//             styleInLarge="justify-content-center column-gap-xl-4"
-//             styleImg="col-xl-5"
-//             styleText="col-xl-5"
-//             sideText={
-//               <>
-//                 {/* Store Information */}
-//                 <div className="our-store">
-//                   <h3 className="c-d-gray">Our Store</h3>
-//                   <motion.address className="my-4" variants={fadeInUp}>
-//                     <span>First Address</span>
-//                     <br />
-//                     <span>Second Address</span>
-//                   </motion.address>
-//                   <motion.div className="telephone" variants={fadeInUp}>
-//                     Tel: Number Here
-//                     <br />
-//                     Email: Email Here
-//                   </motion.div>
-//                 </div>
-//                 {/* Careers Information */}
-//                 {/* <motion.div className="careers mt-5" variants={fadeInUp}>
-//                   <h4 className="c-d-gray">Careers at ComfyHaven</h4>
-//                   <span className="d-block my-4">
-//                     Learn more about our teams and job openings.
-//                   </span>
-//                   <button className="btn py-3 px-4 border-out-d-gray rounded-0">
-//                     Explore Jobs
-//                   </button>
-//                 </motion.div> */}
-//               </>
-//             }
-//           />
-//         </motion.div>
-//       </motion.div>
-//     </motion.div>
-//   );
-// };
-
-// export default Contact;
-
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-// import mainImg from "../assets/contact_page.avif"; // Use your own background image here
-import HeaderDashed from "../components/HeaderDashed";
+import { toast } from "react-toastify"; // Importing toast
+import "react-toastify/dist/ReactToastify.css"; // Import the styles
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
   const [error, setError] = useState(null);
 
   const fadeInUp = {
@@ -103,7 +13,8 @@ const Contact = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
 
-  const handleFormSubmit = async (values) => {
+  // Handle form submission
+  const handleFormSubmit = async (values, { resetForm }) => {
     setLoading(true);
     const json = JSON.stringify({ ...values, access_key: "7d78993e-8962-489c-a26d-7ecce59ff99a" });
 
@@ -118,12 +29,15 @@ const Contact = () => {
       }).then((res) => res.json());
 
       if (res.success) {
-        setMessage(res.message);
+        toast.success("Form submitted successfully!"); // Success toast
+        resetForm(); // Reset the form data
       } else {
+        toast.error(res.message || "Something went wrong!"); // Error toast
         setError(res.message);
       }
     } catch (error) {
       setError("Something went wrong. Please try again later.");
+      toast.error("Something went wrong. Please try again later."); // Error toast
     } finally {
       setLoading(false);
     }
@@ -185,7 +99,7 @@ const Contact = () => {
           initialValues={{ name: "", email: "", message: "" }}
           onSubmit={handleFormSubmit}
         >
-          {({ isSubmitting }) => (
+          {({ isSubmitting, resetForm }) => (
             <Form
               className="mt-5 d-flex flex-column gap-4 align-items-center border border-2 p-4"
               style={{
@@ -301,7 +215,6 @@ const Contact = () => {
               </motion.button>
 
               {/* Success/Error Message */}
-              {message && <p className="text-success">{message}</p>}
               {error && <p className="text-danger">{error}</p>}
             </Form>
           )}
@@ -312,11 +225,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-
-
-
-
-
-
-
