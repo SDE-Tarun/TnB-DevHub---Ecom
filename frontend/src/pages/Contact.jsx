@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast } from "react-toastify"; // Importing toast
 import "react-toastify/dist/ReactToastify.css"; // Import the styles
+import HeaderDashed from "../components/HeaderDashed";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
@@ -51,7 +52,7 @@ const Contact = () => {
       transition={{ duration: 0.5 }}
       className="contact-page"
       style={{
-        backgroundImage: `url("https://nrbapp.jollylifestyle.com/assets/img/menu-pages/contact-us-mobile.gif")`,
+        backgroundImage: `url("https://img.freepik.com/free-photo/vintage-pink-telephone-assortment_23-2148913963.jpg?t=st=1736438864~exp=1736442464~hmac=df47c4bdc1e97bd51cedf5e90510b6e9b38bb9f9fcd6983d1e2036ebea82fa40&w=2000")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
@@ -91,7 +92,7 @@ const Contact = () => {
             marginBottom: "30px",
           }}
         >
-          {/* <HeaderDashed head1="Contact" head2="US" /> */}
+          <HeaderDashed head1="Contact" head2="US" />
         </motion.h1>
 
         {/* Web3 Form Section */}
