@@ -14,6 +14,7 @@ const CollectionCard = ({ data: { _id, images, title, price } }) => {
           src={images[0]} // Assuming images is an array and we use the first image
           alt={title}
           className="card-img rounded mx-h-300 trans-3 img-scall"
+          style={{ objectFit: 'cover', height: '200px' }}
         />
       </figure>
       <article className="card-body text-start p-0">

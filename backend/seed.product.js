@@ -36,6 +36,9 @@ const dummy_products = [
   {
     title: "Luxury Comforter",
     price: 2499,
+    images: [
+      "https://images.unsplash.com/photo-1721146609543-491c1ec04240?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmVkc2hlZXRzfGVufDB8fDB8fHww"
+    ],
     category: "Bedding",
     material: "Microfiber",
     ratings: {
@@ -54,6 +57,9 @@ const dummy_products = [
   {
     title: "Winter Comforter",
     price: 3199,
+    images: [
+       "https://media.istockphoto.com/id/654925766/photo/bed-in-a-hotel-room-thailand.jpg?s=612x612&w=0&k=20&c=9Owm-cSU5ZCH56zPw1OhSzl4d2rMsyQoN5zLUtKZNsc="
+    ],
     stock: 15,
     sizes: ["Queen"],
     description: "Thick comforter designed for cold winters.",
@@ -65,6 +71,9 @@ const dummy_products = [
   {
     title: "Geometric Bedsheet",
     price: 1099,
+    images: [
+      "https://media.istockphoto.com/id/1326817118/photo/luxury-bedroom-interior-and-bed-in-hotel-apartment-on-koh-samui-island-in-thailand.jpg?s=612x612&w=0&k=20&c=d_yt-ZRn1oRi3AR_vIHHWGAtljr0311EMkFuDVrhXZU="
+    ],
     description: "Bedsheet with a modern geometric pattern.",
     category: "Home Furnishing",
     color: "Multicolor",
@@ -96,28 +105,12 @@ const dummy_products = [
   {
     title: "Reversible Comforter",
     price: 3299,
+    images: [
+      "https://media.istockphoto.com/id/641177180/photo/bedroom-interior.jpg?s=612x612&w=0&k=20&c=ftNrIcLpbUK2ZHMPFe0JQYc02LETsQA_4UBbd0YnS2U="
+    ],
     sizes: ["Queen", "King"],
     color: "Navy Blue/White",
-  },
-  {
-    title: "Ethnic Print Bedsheet",
-    price: 799,
-    stock: 20,
-    material: "Handloom Cotton",
-    category: "Traditional Bedding",
-    ratings: {
-      average: 4.0,
-      totalReviews: 60,
-    },
-  },
-  {
-    title: "Quilted Comforter",
-    price: 2699,
-    images: ["quilted_comforter.jpg"],
-    material: "Feather Touch",
-    color: "Cream",
-    description: "Quilted design for extra warmth and comfort.",
-  },
+  }
 ];
 
 async function seedDB() {

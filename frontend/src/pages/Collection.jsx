@@ -45,11 +45,12 @@ const Collection = () => {
     >
       <div className="container">
         <div className="row row-gap-4">
-          {/* Display all products */}
-          <div className="col-12 col-md-8 col-lg-9 col-xxl-10 position-relative">
-            <div className="row">
+          {/* Use flexbox or grid system to align cards */}
+          <div className="col-12">
+            <div className="row g-4">
+              {/* Display all products */}
               {productsData.map((product) => (
-                <div key={product._id} className="col-12 col-md-4 col-lg-3">
+                <div key={product._id} className="col-12 col-md-6 col-lg-4 col-xl-3">
                   <CollectionCard data={product} />
                 </div>
               ))}
