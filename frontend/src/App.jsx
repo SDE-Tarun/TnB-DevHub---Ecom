@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AdminPanel from "./pages/AdminPanel";
 import Collection from "./pages/Collection";
+import ProductDetails from "./pages/ProductDetails";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
@@ -49,6 +50,7 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/admin-panel" element={<AdminPanel />} />
             <Route path="/collection" element={<Collection />} />
+            <Route path="/products/:id" element={<ProductDetails />} /> {/* Route for product details */}
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>

@@ -844,3 +844,20 @@ nav ul a.active {
     filter: brightness(100);
   }
 }
+
+/* Style for the 'Add to Cart' button */
+.btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #1b74e4;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #145ab1;
+}
