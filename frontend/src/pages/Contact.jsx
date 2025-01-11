@@ -44,6 +44,9 @@ const Contact = () => {
     }
   };
 
+  // https://img.freepik.com/free-photo/handsome-young-business-man-using-phone-outside-street_1303-28871.jpg?t=st=1736493241~exp=1736496841~hmac=3bf8d1b4307be89a71d7b46449bc2fcdd91568b5fa4ce57f4a7217a9bce1f9b1&w=1800
+
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -52,7 +55,7 @@ const Contact = () => {
       transition={{ duration: 0.5 }}
       className="contact-page"
       style={{
-        backgroundImage: `url("https://img.freepik.com/free-photo/vintage-pink-telephone-assortment_23-2148913963.jpg?t=st=1736438864~exp=1736442464~hmac=df47c4bdc1e97bd51cedf5e90510b6e9b38bb9f9fcd6983d1e2036ebea82fa40&w=2000")`,
+        backgroundImage: `url("https://images.unsplash.com/photo-1542435503-956c469947f6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvbnRhY3QlMjBwYWdlfGVufDB8fDB8fHww")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
@@ -107,6 +110,7 @@ const Contact = () => {
                 maxWidth: "500px",
                 width: "100%", // Ensure form takes full width up to max-width
                 backgroundColor: "#ffffff",
+                backgroundColor: "transparent",
                 borderRadius: "10px",
                 padding: "20px",
                 color: "#333",
@@ -222,6 +226,8 @@ const Contact = () => {
         </Formik>
       </motion.div>
     </motion.div>
+
+    
   );
 };
 

@@ -37,7 +37,7 @@ const Footer = () => {
 
   return (
     <motion.footer
-      className="mt-5 sec-padd"
+      className="mt-0 sec-padd"
       id="footer"
       style={{ backgroundColor: "#e3dcd5", color: "#ccc", padding: "20px 0" }}
       initial="hidden"
