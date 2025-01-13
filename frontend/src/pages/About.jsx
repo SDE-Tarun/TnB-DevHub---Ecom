@@ -179,7 +179,7 @@ const About = () => {
       <motion.div
         className="about-banner"
         style={{
-          backgroundImage: `url('https://images.pexels.com/photos/4112558/pexels-photo-4112558.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+          backgroundImage: `url('https://plus.unsplash.com/premium_photo-1733353309577-ebe815f18392?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fGhvdGVsJTIwYmVkcm9vbXN8ZW58MHx8MHx8fDA%3D')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           minHeight: 'calc(100vh - 2rem)', // Ensure the image covers the screen height
@@ -200,7 +200,7 @@ const About = () => {
         >
           {/* Page header with dashed styling */}
           <motion.div variants={fadeInUp}>
-            <HeaderDashed head1="ABOUT" head2="US" classStyle="fw-normal fs-3" />
+            {/* <HeaderDashed head1="ABOUT" head2="US" classStyle="fw-normal fs-3" /> */}
           </motion.div>
         </motion.div>
       </motion.div>
