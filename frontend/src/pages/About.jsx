@@ -1,4 +1,4 @@
-// import { motion } from "framer-motion";
+ // import { motion } from "framer-motion";
 // import HeaderDashed from "../components/HeaderDashed";
 // // import aboutGif from "../assets/about_us.gif"; // Add your gif image here
 
@@ -179,7 +179,7 @@ const About = () => {
       <motion.div
         className="about-banner"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwNHx8fGVufDB8fHx8fA%3D%3D')`,
+          backgroundImage: `url('https://images.pexels.com/photos/4112558/pexels-photo-4112558.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           minHeight: 'calc(100vh - 2rem)', // Ensure the image covers the screen height
