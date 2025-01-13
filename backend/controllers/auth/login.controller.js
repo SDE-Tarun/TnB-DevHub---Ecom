@@ -1,7 +1,7 @@
 const { validateLoginData } = require("../../utils/validateAuthData");
 const { findUserByUsername } = require("../../utils/User.Db.Operations");
 const { comparePassword } = require("../../utils/bcrypt.operations");
-const { generateToken } = require("../../utils/tokenGenerator");
+const { generateToken } = require("../../utils/jwt.operations");
 
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
@@ -12,12 +12,12 @@ const loginUser = async (req, res) => {
     }
     const user = await findUserByUsername(username);
     if (!user) {
-      console.log(user);
+      // console.log(user);
       return res.status(404).json({ message: "User not found" });
     }
     console.log(user);
     if (!user.password) {
-      console.log("Undefined user password", user.password);
+      console.log("Undefined user password");
       return res.status(500).json({ message: "Invalid user data" });
     }
     // console.log(user.password);
@@ -25,7 +25,7 @@ const loginUser = async (req, res) => {
     if (!isValidPassword) {
       return res.status(400).json({ message: "Credentials do not match" });
     }
-    const token = generateToken(user._id);
+    const token = generateToken(user._id, user.email);
 
     res.status(200).json({
       message: "User logged in successfully",

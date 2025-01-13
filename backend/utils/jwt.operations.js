@@ -6,4 +6,11 @@ const generateToken = (userId, email) => {
   });
 };
 
-module.exports = { generateToken };
+const decodeToken = (token) => {
+  if (!token) {
+    return false;
+  }
+  return jwt.verify(token, process.env.JWT_SECRET);
+};
+
+module.exports = { generateToken, decodeToken };
