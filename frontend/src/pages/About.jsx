@@ -169,9 +169,10 @@ const About = () => {
           backgroundPosition: 'center',
           minHeight: '400px', // Adjust the height as needed
           display: 'flex',
-          alignItems: 'center',
+          alignItems: 'flex-start', // Align items at the top
           justifyContent: 'center',
           color: '#fff',
+          paddingTop: '40px', // Adjust top padding to position the heading near the top
         }}
       >
         <motion.div
@@ -182,7 +183,7 @@ const About = () => {
         >
           {/* Page header with dashed styling */}
           <motion.div variants={fadeInUp}>
-            {/* <HeaderDashed head1="ABOUT" head2="US" classStyle="fw-normal fs-3" /> */}
+            <HeaderDashed head1="ABOUT" head2="US" classStyle="fw-normal fs-3" />
           </motion.div>
         </motion.div>
       </motion.div>
@@ -273,6 +274,7 @@ const About = () => {
 };
 
 export default About;
+
 
 
 
