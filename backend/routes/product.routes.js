@@ -14,8 +14,10 @@ router.get("/all", allProducts);
 
 // 2. API for fetching single product
 router.get("/single/:id", singleProduct);
+// --------------------------------------------------------------------------------------
 
 // Creating of products------>
+
 // 1. API to create a new product
 
 // middleware function to provide the validation result
@@ -26,5 +28,15 @@ const productSchema = require("../validations/product.validation");
 const addProduct = require("../controllers/product/addProduct.controller");
 
 router.post("/add", validateRequest(productSchema), addProduct);
+// ---------------------------------------------------------------------------------------
+
+// Update the existing product
+
+const updateProduct = require("../controllers/product/updateProduct.controller");
+
+router.put("/update", validateRequest(productSchema), updateProduct);
+
+// Deleting products -->
+// start working on this module later
 
 module.exports = router;
