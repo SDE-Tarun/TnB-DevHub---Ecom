@@ -1,18 +1,16 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { toast } from "react-toastify"; // Importing toast
-import "react-toastify/dist/ReactToastify.css"; // Import the styles
+import { toast } from "react-toastify"; // Assuming you are using react-toastify for notifications
+import { useState } from "react";
+import DescribedImage from "../components/DescribedImage";
 import HeaderDashed from "../components/HeaderDashed";
 
 const Contact = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const mainImg =
+    "https://media2.giphy.com/media/5hgMcnAkBVcARGsGWu/giphy.gif?cid=6c09b9520t0cpcoos81nifl3bkrnz5jlmu9fo3xj6tca88r2&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g";
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-  };
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   // Handle form submission
   const handleFormSubmit = async (values, { resetForm }) => {
@@ -44,191 +42,155 @@ const Contact = () => {
     }
   };
 
-  // https://img.freepik.com/free-photo/handsome-young-business-man-using-phone-outside-street_1303-28871.jpg?t=st=1736493241~exp=1736496841~hmac=3bf8d1b4307be89a71d7b46449bc2fcdd91568b5fa4ce57f4a7217a9bce1f9b1&w=1800
-
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      className="contact-page"
-      style={{
-        backgroundImage: `url("https://images.unsplash.com/photo-1542435503-956c469947f6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvbnRhY3QlMjBwYWdlfGVufDB8fDB8fHww")`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        minHeight: "100vh",
-        display: "flex", // Centering the child content horizontally
-        justifyContent: "center", // Centering horizontally
-        alignItems: "center", // Centering vertically
-        textAlign: "center",
-        color: "#fff",
-        padding: "0 20px",
-      }}
+      className="contact-page text-center py-3 pt-5"
     >
-      <motion.div
-        className="container"
-        variants={fadeInUp}
-        initial="hidden"
-        animate="visible"
-        style={{
-          maxWidth: "800px", // Maximum width of the form container
-          width: "100%", // Ensure it takes full width on small screens
-          marginLeft: "auto", // Ensures the form is aligned properly
-          marginRight: "auto", // Ensures the form is aligned properly
-          borderRadius: "10px",
-          padding: "20px",
-          display: "flex", // Flexbox to center the form
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {/* Heading */}
-        <motion.h1
-          className="fw-normal fs-3 mb-4"
-          style={{
-            color: "#FE7878",
-            fontSize: "2.5rem",
-            fontWeight: "bold",
-            marginBottom: "30px",
-          }}
-        >
-          <HeaderDashed head1="Contact" head2="US" />
-        </motion.h1>
+      <div className="container">
+        {/* Header with dashed style */}
+        <HeaderDashed head1="CONTACT" head2="US" classStyle="fw-normal fs-3" />
 
-        {/* Web3 Form Section */}
-        <Formik
-          initialValues={{ name: "", email: "", message: "" }}
-          onSubmit={handleFormSubmit}
-        >
-          {({ isSubmitting, resetForm }) => (
-            <Form
-              className="mt-5 d-flex flex-column gap-4 align-items-center border border-2 p-4"
-              style={{
-                maxWidth: "500px",
-                width: "100%", // Ensure form takes full width up to max-width
-                backgroundColor: "#ffffff",
-                backgroundColor: "transparent",
-                borderRadius: "10px",
-                padding: "20px",
-                color: "#333",
-              }}
+        {/* Described Image Section */}
+        <DescribedImage
+          img={mainImg}
+          imgTitle="desk image"
+          styleInLarge="justify-content-center column-gap-xl-4"
+          styleImg="col-xl-5"
+          styleText="col-xl-5"
+          sideText={
+            <Formik
+              initialValues={{ name: "", email: "", message: "" }}
+              onSubmit={handleFormSubmit}
             >
-              {/* Name Field */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="d-flex flex-column align-items-start w-100"
-              >
-                <label htmlFor="name" className="mb-2 fs-4">
-                  Name:
-                </label>
-                <Field
-                  className="p-3 outline-0 w-100 border-gray border-05"
-                  name="name"
-                  type="text"
-                  id="name"
-                  placeholder="Enter Your Name"
+              {({ isSubmitting, resetForm }) => (
+                <Form
+                  className="mt-5 d-flex flex-column gap-4 align-items-center"
                   style={{
-                    border: "1px solid #ccc",
-                    borderRadius: "5px",
+                    maxWidth: "500px",
+                    width: "100%", // Ensure form takes full width up to max-width
+                    backgroundColor: "transparent",
+                    borderRadius: "10px",
+                    padding: "20px",
+                    color: "#333",
                   }}
-                />
-                <ErrorMessage
-                  name="name"
-                  component="div"
-                  className="text-danger mt-2"
-                />
-              </motion.div>
+                >
+                  {/* Name Field */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="d-flex flex-column align-items-start w-100"
+                  >
+                    <label htmlFor="name" className="mb-2 fs-4">
+                      Name:
+                    </label>
+                    <Field
+                      className="p-3 outline-0 w-100 border-gray border-05"
+                      name="name"
+                      type="text"
+                      id="name"
+                      placeholder="Enter Your Name"
+                      style={{
+                        border: "1px solid #ccc",
+                        borderRadius: "5px",
+                      }}
+                    />
+                    <ErrorMessage
+                      name="name"
+                      component="div"
+                      className="text-danger mt-2"
+                    />
+                  </motion.div>
 
-              {/* Email Field */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="d-flex flex-column align-items-start w-100"
-              >
-                <label htmlFor="email" className="mb-2 fs-4">
-                  Email:
-                </label>
-                <Field
-                  className="p-3 outline-0 w-100 border-gray border-05"
-                  name="email"
-                  type="email"
-                  id="email"
-                  placeholder="example@gmail.com"
-                  style={{
-                    border: "1px solid #ccc",
-                    borderRadius: "5px",
-                  }}
-                />
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className="text-danger mt-2"
-                />
-              </motion.div>
+                  {/* Email Field */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="d-flex flex-column align-items-start w-100"
+                  >
+                    <label htmlFor="email" className="mb-2 fs-4">
+                      Email:
+                    </label>
+                    <Field
+                      className="p-3 outline-0 w-100 border-gray border-05"
+                      name="email"
+                      type="email"
+                      id="email"
+                      placeholder="example@gmail.com"
+                      style={{
+                        border: "1px solid #ccc",
+                        borderRadius: "5px",
+                      }}
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className="text-danger mt-2"
+                    />
+                  </motion.div>
 
-              {/* Message Field */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="d-flex flex-column align-items-start w-100"
-              >
-                <label htmlFor="message" className="mb-2 fs-4">
-                  Message:
-                </label>
-                <Field
-                  className="p-3 outline-0 w-100 border-gray border-05"
-                  name="message"
-                  component="textarea"
-                  id="message"
-                  placeholder="Enter your message"
-                  style={{
-                    border: "1px solid #ccc",
-                    borderRadius: "5px",
-                  }}
-                />
-                <ErrorMessage
-                  name="message"
-                  component="div"
-                  className="text-danger mt-2"
-                />
-              </motion.div>
+                  {/* Message Field */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="d-flex flex-column align-items-start w-100"
+                  >
+                    <label htmlFor="message" className="mb-2 fs-4">
+                      Message:
+                    </label>
+                    <Field
+                      className="p-3 outline-0 w-100 border-gray border-05"
+                      name="message"
+                      component="textarea"
+                      id="message"
+                      placeholder="Enter your message"
+                      style={{
+                        border: "1px solid #ccc",
+                        borderRadius: "5px",
+                      }}
+                    />
+                    <ErrorMessage
+                      name="message"
+                      component="div"
+                      className="text-danger mt-2"
+                    />
+                  </motion.div>
 
-              {/* Submit Button */}
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                type="submit"
-                className="btn bg-black py-2 px-4 rounded c-white fs-5 mt-4 w-100"
-                style={{
-                  backgroundColor: "#1B74E4",
-                  color: "#fff",
-                  padding: "0.8rem",
-                  borderRadius: "5px",
-                  border: "none",
-                }}
-                disabled={isSubmitting || loading}
-              >
-                {loading ? "Submitting..." : "Submit"}
-              </motion.button>
+                  {/* Submit Button */}
+                  <motion.button
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    type="submit"
+                    className="btn bg-black py-2 px-4 rounded c-white fs-5 mt-4 w-100"
+                    style={{
+                      backgroundColor: "#1B74E4",
+                      color: "#fff",
+                      padding: "0.8rem",
+                      borderRadius: "5px",
+                      border: "none",
+                    }}
+                    disabled={isSubmitting || loading}
+                  >
+                    {loading ? "Submitting..." : "Submit"}
+                  </motion.button>
 
-              {/* Success/Error Message */}
-              {error && <p className="text-danger">{error}</p>}
-            </Form>
-          )}
-        </Formik>
-      </motion.div>
+                  {/* Success/Error Message */}
+                  {error && <p className="text-danger">{error}</p>}
+                </Form>
+              )}
+            </Formik>
+          }
+        />
+      </div>
     </motion.div>
-
-    
   );
 };
 
 export default Contact;
+
