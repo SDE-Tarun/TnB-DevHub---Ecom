@@ -304,7 +304,7 @@ const About = () => {
       <motion.div
         className="about-banner"
         style={{
-          backgroundImage: `url('https://images.pexels.com/photos/2815377/pexels-photo-2815377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+          backgroundImage: `url('https://files.oaiusercontent.com/file-RWYio9EguGPK8dv2jZrkjp?se=2025-01-14T04%3A59%3A46Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Da7d19c28-9852-4ac5-892a-446bce74759b.webp&sig=6/LpBJjOzM6VWCeBzoFUfyoXdpZq%2Bccj%2BdvTp08M07Q%3D')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           minHeight: "calc(100vh - 2rem)",
@@ -322,7 +322,7 @@ const About = () => {
           variants={staggerContainer}
         >
           <motion.div variants={fadeInUp}>
-            <HeaderDashed head1="ABOUT" head2="US" classStyle="fw-normal fs-3" />
+            {/* <HeaderDashed head1="ABOUT" head2="US" classStyle="fw-normal fs-3" /> */}
           </motion.div>
         </motion.div>
       </motion.div>
