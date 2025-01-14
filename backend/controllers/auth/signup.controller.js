@@ -1,4 +1,4 @@
-const { generateToken } = require("../../utils/tokenGenerator");
+const { generateToken } = require("../../utils/jwt.operations");
 const { hashedPassword } = require("../../utils/bcrypt.operations");
 const {
   findUserByEmail,

@@ -1,7 +1,7 @@
 const { OAuth2Client } = require("google-auth-library");
 const dotenv = require("dotenv");
 dotenv.config();
-const { generateToken } = require("../../utils/tokenGenerator");
+const { generateToken } = require("../../utils/jwt.operations");
 
 const UserModel = require("../../models/user.models");
 
