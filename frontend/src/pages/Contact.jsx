@@ -194,20 +194,255 @@
 
 // export default Contact;
 
+// import { motion } from "framer-motion";
+// import { Formik, Form, Field, ErrorMessage } from "formik";
+// import { toast } from "react-toastify"; // Assuming you are using react-toastify for notifications
+// import { useState } from "react";
+// import HeaderDashed from "../components/HeaderDashed";
+
+// const Contact = () => {
+//   const [loading, setLoading] = useState(false);
+//   const [error, setError] = useState("");
+
+//   // Handle form submission
+//   const handleFormSubmit = async (values, { resetForm }) => {
+//     setLoading(true);
+//     const json = JSON.stringify({ ...values, access_key: "7d78993e-8962-489c-a26d-7ecce59ff99a" });
+
+//     try {
+//       const res = await fetch("https://api.web3forms.com/submit", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Accept: "application/json",
+//         },
+//         body: json,
+//       }).then((res) => res.json());
+
+//       if (res.success) {
+//         toast.success("Form submitted successfully!"); // Success toast
+//         resetForm(); // Reset the form data
+//       } else {
+//         toast.error(res.message || "Something went wrong!"); // Error toast
+//         setError(res.message);
+//       }
+//     } catch (error) {
+//       setError("Something went wrong. Please try again later.");
+//       toast.error("Something went wrong. Please try again later."); // Error toast
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <motion.div
+//       initial={{ opacity: 0 }}
+//       animate={{ opacity: 1 }}
+//       exit={{ opacity: 0 }}
+//       className="contact-page text-center py-3 pt-0"
+//       style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }} // Ensure full page height
+//     >
+//       {/* Banner Section with background image */}
+//       <motion.div
+//         className="about-banner"
+//         style={{
+//           backgroundImage: `url('https://images.pexels.com/photos/3184340/pexels-photo-3184340.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+//           backgroundSize: 'cover',
+//           backgroundPosition: 'center',
+//           minHeight: 'calc(100vh - 2rem)', // Set height of the banner
+//           display: 'flex',
+//           flexDirection: 'column',
+//           justifyContent: 'center',
+//           color: '#fff',
+//           paddingTop: '40px',
+//         }}
+//       >
+//         <motion.div
+//           className="container"
+//           initial="hidden"
+//           animate="visible"
+//           variants={{
+//             hidden: { opacity: 0 },
+//             visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+//           }}
+//           style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}
+//         >
+//           {/* Page header with dashed styling */}
+//         </motion.div>
+//       </motion.div>
+
+//       {/* Add margin-top to the header to place it just below the image section */}
+//       <motion.div
+//         className="container mt-5"
+//         initial={{ opacity: 0 }}
+//         animate={{ opacity: 1 }}
+//         exit={{ opacity: 0 }}
+//         style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', flex: 1, marginTop: '-50px' }} // Adjust margin-top for desired spacing
+//       >
+//         {/* Add dashed heading */}
+//         <HeaderDashed head1="CONTACT" head2="US" classStyle="fw-normal fs-3" />
+//       </motion.div>
+
+//       {/* Form Section */}
+//       <motion.div
+//         className="container"
+//         initial={{ opacity: 0 }}
+//         animate={{ opacity: 1 }}
+//         exit={{ opacity: 0 }}
+//         style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', flex: 1 }} // Center the form vertically and horizontally
+//       >
+//         <Formik
+//           initialValues={{ name: "", email: "", message: "" }}
+//           onSubmit={handleFormSubmit}
+//         >
+//           {({ isSubmitting, resetForm }) => (
+//             <Form
+//               className="mt-5 d-flex flex-column gap-4 align-items-center"
+//               style={{
+//                 maxWidth: "500px",
+//                 width: "100%",
+//                 backgroundColor: "transparent",
+//                 borderRadius: "10px",
+//                 padding: "20px",
+//                 color: "#333",
+//               }}
+//             >
+//               {/* Name Field */}
+//               <motion.div
+//                 initial={{ opacity: 0, x: -50 }}
+//                 animate={{ opacity: 1, x: 0 }}
+//                 transition={{ duration: 0.5 }}
+//                 className="d-flex flex-column align-items-start w-100"
+//               >
+//                 <label htmlFor="name" className="mb-2 fs-4">
+//                   Name:
+//                 </label>
+//                 <Field
+//                   className="p-3 outline-0 w-100 border-gray border-05"
+//                   name="name"
+//                   type="text"
+//                   id="name"
+//                   placeholder="Enter Your Name"
+//                   style={{
+//                     border: "1px solid #ccc",
+//                     borderRadius: "5px",
+//                   }}
+//                 />
+//                 <ErrorMessage
+//                   name="name"
+//                   component="div"
+//                   className="text-danger mt-2"
+//                 />
+//               </motion.div>
+
+//               {/* Email Field */}
+//               <motion.div
+//                 initial={{ opacity: 0, x: -50 }}
+//                 animate={{ opacity: 1, x: 0 }}
+//                 transition={{ duration: 0.5 }}
+//                 className="d-flex flex-column align-items-start w-100"
+//               >
+//                 <label htmlFor="email" className="mb-2 fs-4">
+//                   Email:
+//                 </label>
+//                 <Field
+//                   className="p-3 outline-0 w-100 border-gray border-05"
+//                   name="email"
+//                   type="email"
+//                   id="email"
+//                   placeholder="example@gmail.com"
+//                   style={{
+//                     border: "1px solid #ccc",
+//                     borderRadius: "5px",
+//                   }}
+//                 />
+//                 <ErrorMessage
+//                   name="email"
+//                   component="div"
+//                   className="text-danger mt-2"
+//                 />
+//               </motion.div>
+
+//               {/* Message Field */}
+//               <motion.div
+//                 initial={{ opacity: 0, x: -50 }}
+//                 animate={{ opacity: 1, x: 0 }}
+//                 transition={{ duration: 0.5 }}
+//                 className="d-flex flex-column align-items-start w-100"
+//               >
+//                 <label htmlFor="message" className="mb-2 fs-4">
+//                   Message:
+//                 </label>
+//                 <Field
+//                   className="p-3 outline-0 w-100 border-gray border-05"
+//                   name="message"
+//                   component="textarea"
+//                   id="message"
+//                   placeholder="Enter your message"
+//                   style={{
+//                     border: "1px solid #ccc",
+//                     borderRadius: "5px",
+//                   }}
+//                 />
+//                 <ErrorMessage
+//                   name="message"
+//                   component="div"
+//                   className="text-danger mt-2"
+//                 />
+//               </motion.div>
+
+//               {/* Submit Button */}
+//               <motion.button
+//                 initial={{ opacity: 0 }}
+//                 animate={{ opacity: 1 }}
+//                 transition={{ duration: 0.5 }}
+//                 type="submit"
+//                 className="btn bg-black py-2 px-4 rounded c-white fs-5 mt-4 w-100"
+//                 style={{
+//                   backgroundColor: "#1B74E4",
+//                   color: "#fff",
+//                   padding: "0.8rem",
+//                   borderRadius: "5px",
+//                   border: "none",
+//                 }}
+//                 disabled={isSubmitting || loading}
+//               >
+//                 {loading ? "Submitting..." : "Submit"}
+//               </motion.button>
+
+//               {/* Success/Error Message */}
+//               {error && <p className="text-danger">{error}</p>}
+//             </Form>
+//           )}
+//         </Formik>
+//       </motion.div>
+//     </motion.div>
+//   );
+// };
+
+// export default Contact;
+
 import { motion } from "framer-motion";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { toast } from "react-toastify"; // Assuming you are using react-toastify for notifications
+import { toast } from "react-toastify";
 import { useState } from "react";
 import HeaderDashed from "../components/HeaderDashed";
+
+const animationVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Handle form submission
   const handleFormSubmit = async (values, { resetForm }) => {
     setLoading(true);
-    const json = JSON.stringify({ ...values, access_key: "7d78993e-8962-489c-a26d-7ecce59ff99a" });
+    const json = JSON.stringify({
+      ...values,
+      access_key: "7d78993e-8962-489c-a26d-7ecce59ff99a",
+    });
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
@@ -220,15 +455,15 @@ const Contact = () => {
       }).then((res) => res.json());
 
       if (res.success) {
-        toast.success("Form submitted successfully!"); // Success toast
-        resetForm(); // Reset the form data
+        toast.success("Form submitted successfully!");
+        resetForm();
       } else {
-        toast.error(res.message || "Something went wrong!"); // Error toast
+        toast.error(res.message || "Something went wrong!");
         setError(res.message);
       }
     } catch (error) {
       setError("Something went wrong. Please try again later.");
-      toast.error("Something went wrong. Please try again later."); // Error toast
+      toast.error("Something went wrong. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -236,60 +471,76 @@ const Contact = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      variants={animationVariants}
+      transition={{ duration: 0.8 }}
       className="contact-page text-center py-3 pt-0"
-      style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }} // Ensure full page height
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
-      {/* Banner Section with background image */}
       <motion.div
         className="about-banner"
         style={{
           backgroundImage: `url('https://images.pexels.com/photos/3184340/pexels-photo-3184340.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          minHeight: 'calc(100vh - 2rem)', // Set height of the banner
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          color: '#fff',
-          paddingTop: '40px',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "calc(100vh - 2rem)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          color: "#fff",
+          paddingTop: "40px",
         }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
       >
         <motion.div
           className="container"
-          initial="hidden"
-          animate="visible"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
           variants={{
             hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+            visible: { opacity: 1, transition: { staggerChildren: 0.3 } },
           }}
-          style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}
-        >
-          {/* Page header with dashed styling */}
-        </motion.div>
+        ></motion.div>
       </motion.div>
 
-      {/* Add margin-top to the header to place it just below the image section */}
       <motion.div
         className="container mt-5"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', flex: 1, marginTop: '-50px' }} // Adjust margin-top for desired spacing
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          flex: 1,
+          marginTop: "-50px",
+        }}
+        initial="hidden"
+        animate="visible"
+        transition={{ duration: 1 }}
       >
-        {/* Add dashed heading */}
         <HeaderDashed head1="CONTACT" head2="US" classStyle="fw-normal fs-3" />
       </motion.div>
 
-      {/* Form Section */}
       <motion.div
         className="container"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', flex: 1 }} // Center the form vertically and horizontally
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          flex: 1,
+        }}
+        variants={animationVariants}
+        initial="hidden"
+        animate="visible"
+        transition={{ duration: 1 }}
       >
         <Formik
           initialValues={{ name: "", email: "", message: "" }}
@@ -307,12 +558,9 @@ const Contact = () => {
                 color: "#333",
               }}
             >
-              {/* Name Field */}
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
                 className="d-flex flex-column align-items-start w-100"
+                variants={animationVariants}
               >
                 <label htmlFor="name" className="mb-2 fs-4">
                   Name:
@@ -335,12 +583,9 @@ const Contact = () => {
                 />
               </motion.div>
 
-              {/* Email Field */}
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
                 className="d-flex flex-column align-items-start w-100"
+                variants={animationVariants}
               >
                 <label htmlFor="email" className="mb-2 fs-4">
                   Email:
@@ -363,12 +608,9 @@ const Contact = () => {
                 />
               </motion.div>
 
-              {/* Message Field */}
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
                 className="d-flex flex-column align-items-start w-100"
+                variants={animationVariants}
               >
                 <label htmlFor="message" className="mb-2 fs-4">
                   Message:
@@ -391,11 +633,7 @@ const Contact = () => {
                 />
               </motion.div>
 
-              {/* Submit Button */}
               <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
                 type="submit"
                 className="btn bg-black py-2 px-4 rounded c-white fs-5 mt-4 w-100"
                 style={{
@@ -405,12 +643,12 @@ const Contact = () => {
                   borderRadius: "5px",
                   border: "none",
                 }}
+                variants={animationVariants}
                 disabled={isSubmitting || loading}
               >
                 {loading ? "Submitting..." : "Submit"}
               </motion.button>
 
-              {/* Success/Error Message */}
               {error && <p className="text-danger">{error}</p>}
             </Form>
           )}
