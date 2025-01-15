@@ -288,14 +288,14 @@ const Login = () => {
                 </Link>
               </motion.p>
               <motion.div
-                className="w-100 text-end mt-3 align-items-center d-flex justify-center"
+                className="w-100 text-end align-items-center d-flex justify-center"
                 initial="hidden"
                 animate="visible"
                 variants={fieldAnimation}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <Link
-                  to="#"
+                  to="/forget-password"
                   className="text-primary text-decoration-none"
                 >
                   Forgot Password?
