@@ -304,7 +304,7 @@ const About = () => {
       <motion.div
         className="about-banner"
         style={{
-          backgroundImage: `url('https://files.oaiusercontent.com/file-JdTHDG4XWUEN789XyWeos6?se=2025-01-14T05%3A08%3A54Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dedb0101c-64b5-4b7e-870b-6a43d37f415a.webp&sig=4kfe7T4Kg/U4SxzuCUF/gnIjN8OKMlQLbRrNxNElO6w%3D')`,
+          backgroundImage: `url('https://images.pexels.com/photos/4050387/pexels-photo-4050387.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           minHeight: "calc(100vh - 2rem)",
