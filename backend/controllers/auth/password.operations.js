@@ -1,5 +1,8 @@
 // const UserModel = require("../../models/user.models");
-const { findUserByUsername } = require("../../utils/User.Db.Operations");
+const {
+  findUserByUsername,
+  findUserByEmail,
+} = require("../../utils/User.Db.Operations");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -20,6 +23,15 @@ const forgetPassword = async (req, res) => {
         .json({ message: "User not found, please register" });
     }
     const token = generateToken(checkUser._id, checkUser.email);
+
+    // Check if the frontend URI is available
+    const frontendUri = process.env.FRONTEND_USER_URI;
+    if (!frontendUri) {
+      return res.status(500).json({
+        message: "Frontend URI is not defined in the environment variables.",
+      });
+    }
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       secure: true,
@@ -59,6 +71,9 @@ const forgetPassword = async (req, res) => {
 const resetPassword = async (req, res) => {
   try {
     const { token } = req.params;
+    if (!token) {
+      return res.status(404).json({ message: "Token not found" });
+    }
     const { password } = req.body;
     if (!password) {
       return res
