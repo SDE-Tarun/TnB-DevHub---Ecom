@@ -112,6 +112,33 @@ const Login = () => {
     }
   };
 
+  const [resetMessage, setResetMessage] = useState(""); // For displaying the reset message
+
+  // Handle the Forget Password Click
+  const handleForgotPassword = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/forget-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: "tarunkumar23j@gmail.com" }), // Replace with actual user email or retrieve from form state
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setResetMessage(data.message); // Show the success message from the backend
+        toast.success(data.message); // Optional, toast notification
+      } else {
+        const data = await response.json();
+        setResetMessage(data.message); // Show the error message from the backend
+        toast.error(data.message); // Optional, toast notification
+      }
+    } catch (error) {
+      console.error("Error in password reset:", error);
+      setResetMessage("An unexpected error occurred. Please try again.");
+      toast.error("Something went wrong. Please try again!");
+    }
+  };
+
   const fieldAnimation = {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0 },
@@ -295,7 +322,8 @@ const Login = () => {
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <Link
-                  to="/forget-password"
+                  to="#"
+                  onClick={handleForgotPassword} // Call the function to handle password reset
                   className="text-primary text-decoration-none"
                 >
                   Forgot Password?

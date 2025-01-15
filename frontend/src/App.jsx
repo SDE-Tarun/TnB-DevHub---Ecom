@@ -48,7 +48,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/forget-password" element={<ResetPassword />} /> {/* Add this route */}
+            {/* <Route path="/forget-password" element={<ResetPassword />} /> Add this route */}
             <Route path="/reset-password/:token" element={<ResetPassword />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/admin-panel" element={<AdminPanel />} />
