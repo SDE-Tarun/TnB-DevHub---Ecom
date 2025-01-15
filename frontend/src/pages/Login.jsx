@@ -384,26 +384,37 @@ const Login = () => {
   };
 
   // Handle the Forget Password Click
-  const handleForgotPassword = async (username) => {
+  const handleForgotPassword = async (e, username, setFieldValue) => {
+    e.preventDefault();
+  
+    // Clear any previous messages
+    setResetMessage("");
+    toast.dismiss(); // Dismiss any active toasts to avoid multiple toasts showing simultaneously
+  
     try {
       const response = await axios.post(
         "http://localhost:3000/api/auth/forget-password",
         { username } // Pass the username from the form data
       );
-
+  
       if (response.status === 200) {
-        setResetMessage(response.data.message); // Show the success message from the backend
-        toast.success(response.data.message); // Optional, toast notification
+        // Success case
+        setResetMessage(response.data.message); // Set the success message
+        toast.success(response.data.message); // Show the success toast
+        setFieldValue('username', ''); // Clear the username field
       } else {
-        setResetMessage(response.data.message); // Show the error message from the backend
-        toast.error(response.data.message); // Optional, toast notification
+        // Error case
+        setResetMessage(response.data.message); // Set the error message
+        toast.error(response.data.message); // Show the error toast
       }
     } catch (error) {
       console.error("Error in password reset:", error);
+      // Set the error message in case of unexpected errors
       setResetMessage("An unexpected error occurred. Please try again.");
-      toast.error("Something went wrong. Please try again!");
+      toast.error("Something went wrong. Please try again!"); // Show the error toast
     }
   };
+  
 
   const fieldAnimation = {
     hidden: { opacity: 0, x: -50 },
@@ -429,7 +440,7 @@ const Login = () => {
           initialValues={{ username: "", password: "" }}
           onSubmit={handleSubmit}
         >
-          {({ isSubmitting, values }) => (
+          {({ isSubmitting, values, setFieldValue }) => (
             <Form className="mt-5 d-flex flex-column gap-5 align-items-center border border-2 p-4">
               <motion.div
                 className="d-flex flex-column align-items-start w-100"
@@ -530,13 +541,13 @@ const Login = () => {
                 variants={fieldAnimation}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <Link
+                <button
                   to="#"
-                  onClick={() => handleForgotPassword(values.username)} // Pass the username to the function
+                  onClick={(e) => handleForgotPassword(e, values.username, setFieldValue)} // Pass the username to the function
                   className="text-primary text-decoration-none"
                 >
                   Forgot Password?
-                </Link>
+                </button>
               </motion.div>
             </Form>
           )}

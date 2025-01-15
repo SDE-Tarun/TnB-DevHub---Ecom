@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
 import HeaderDashed from "../components/HeaderDashed"; // Assuming this is the same header component as in AdminPanel.jsx
+import { toast } from "react-toastify"; // Importing toast from react-toastify
+import "react-toastify/dist/ReactToastify.css"; // Importing the default toast styles
 
 const ResetPassword = () => {
   const { token } = useParams();
@@ -24,8 +26,13 @@ const ResetPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Reset error message before making the request
+  setError("");
+  setSuccess("");
+
     if (password !== confirmPassword) {
       setError("Passwords do not match");
+      toast.error("Passwords do not match"); // Display error toast
       return;
     }
 
@@ -35,10 +42,11 @@ const ResetPassword = () => {
         { password }
       );
       setSuccess(response.data.message);
-      setError(""); // Clear error on success
+      toast.success(response.data.message); // Show success toast
       setTimeout(() => navigate("/login"), 3000); // Redirect to login after success
     } catch (err) {
       setError(err.response ? err.response.data.message : "Something went wrong");
+      toast.error(err.response ? err.response.data.message : "Something went wrong"); // Show error toast
     }
   };
 
