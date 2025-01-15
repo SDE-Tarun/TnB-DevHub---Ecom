@@ -19,7 +19,7 @@ const CollectionCard = ({ data: { _id, images, title, price } }) => {
       </figure>
       <article className="card-body text-start p-0">
         <h4 className="card-title fs-6 c-gray fw-normal">{title}</h4>
-        <div className="price fw-bold fs-small c-d-gray">{price} $</div>
+        <div className="price fw-bold fs-small c-d-gray">₹ {price}</div>
       </article>
     </div>
   );

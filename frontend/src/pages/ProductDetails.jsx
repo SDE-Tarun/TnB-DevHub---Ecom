@@ -101,7 +101,7 @@ const ProductDetails = () => {
               </div>
             )}
 
-            <span className="fw-bold fs-2 d-block mb-3">${productData.price}</span>
+            <span className="fw-bold fs-2 d-block mb-3">₹ {productData.price}</span>
 
             {/* Product Description */}
             <p className="c-gray">{productData.description}</p>
