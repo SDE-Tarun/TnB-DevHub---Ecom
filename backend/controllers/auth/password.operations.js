@@ -1,5 +1,5 @@
 // const UserModel = require("../../models/user.models");
-const { findUserByEmail } = require("../../utils/User.Db.Operations");
+const { findUserByUsername } = require("../../utils/User.Db.Operations");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -8,18 +8,18 @@ const { hashedPassword } = require("../../utils/bcrypt.operations");
 
 const forgetPassword = async (req, res) => {
   try {
-    const { email } = req.body;
+    const { username } = req.body;
 
-    if (!email) {
-      return res.status(400).json({ message: "Please provide email" });
+    if (!username) {
+      return res.status(400).json({ message: "Please provide username" });
     }
-    const checkUser = await findUserByEmail(email);
+    const checkUser = await findUserByUsername(username);
     if (!checkUser) {
       return res
         .status(404)
         .json({ message: "User not found, please register" });
     }
-    const token = generateToken(checkUser._id, email);
+    const token = generateToken(checkUser._id, checkUser.email);
     const transporter = nodemailer.createTransport({
       service: "gmail",
       secure: true,
@@ -31,9 +31,9 @@ const forgetPassword = async (req, res) => {
 
     const reciever = {
       from: "ComfyHeaven",
-      to: email,
+      to: checkUser.email,
       subject: "Password Reset Request",
-      text: `Click on this link to generate your new password \n ${process.env.BACKEND_USER_URI}/reset-password/${token}`,
+      text: `Click on this link to generate your new password \n ${process.env.FRONTEND_USER_URI}/reset-password/${token}`,
     };
     // i do not have to send this backend user uri instead of this i have to send them the frontend uri, so that when the user form their mail clicks on this link
     // they are redirected towards the frontend and then on the frontend have a function that handles the reset password page functionality and upon saving the new password

@@ -39,4 +39,8 @@ router.put("/update", validateRequest(productSchema), updateProduct);
 // Deleting products -->
 // start working on this module later
 
+const deleteProduct = require("../controllers/product/deleteProduct.controller");
+
+router.delete("/product/:_id", deleteProduct);
+
 module.exports = router;
