@@ -1,34 +1,3 @@
-// import React from "react";
-// import { motion } from "framer-motion";
-// import HeaderDashed from "./HeaderDashed";
-
-// const LatestCollection = () => {
-//   // Animation variants
-//   const sectionVariants = {
-//     hidden: { opacity: 0, y: 50 },
-//     visible: { opacity: 1, y: 0 },
-//   };
-
-//   return (
-//     <motion.section
-//       className="latest-collections mt-6"
-//       initial="hidden"
-//       animate="visible"
-//       variants={sectionVariants}
-//       transition={{ duration: 0.8, ease: "easeOut" }}
-//     >
-//       {/* Header with title and description */}
-//       <HeaderDashed
-//         head1="LATEST"
-//         head2="COLLECTIONS"
-//         paragraph="Discover our Latest Collection of premium bedsheets and comforters, where style meets ultimate comfort for your dream bedroom!"
-//       />
-//     </motion.section>
-//   );
-// };
-
-// export default LatestCollection;
-
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import HeaderDashed from "./HeaderDashed";
@@ -72,6 +41,21 @@ const LatestCollection = () => {
     visible: { opacity: 1, y: 0 },
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // Stagger animations for child elements
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
+  };
+
   if (loading) {
     return <p>Loading latest collections...</p>; // Loading message
   }
@@ -95,21 +79,28 @@ const LatestCollection = () => {
         paragraph="Discover our Latest Collection of premium bedsheets and comforters, where style meets ultimate comfort for your dream bedroom!"
       />
 
-      {/* Display the latest products */}
-      <div className="container">
+      {/* Display the latest products with animation */}
+      <motion.div
+        className="container"
+        variants={containerVariants} // Apply stagger animation
+        initial="hidden"
+        animate="visible"
+      >
         <div className="row g-4">
           {productsData.map((product) => (
-            <div
+            <motion.div
               key={product._id}
               className="col-12 col-md-6 col-lg-4 col-xl-3"
+              variants={cardVariants} // Apply individual card animation
             >
               <CollectionCard data={product} />
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </motion.section>
   );
 };
 
 export default LatestCollection;
+
